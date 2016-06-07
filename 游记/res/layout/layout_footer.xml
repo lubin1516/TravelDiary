@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:paddingBottom="3dp"
+    >
+    
+    <RadioGroup
+        android:id="@+id/rg_footer_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" 
+        android:paddingTop="5dp"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_footer_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/rb_diary_selector"
+            android:gravity="center"
+            android:text="精选游记"
+            android:textSize="13sp"
+            android:textColor="@color/rb_color_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_footer_tuan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/rb_near_selector"
+            android:gravity="center"
+            android:text="附近"
+            android:textSize="13sp"
+            android:textColor="@color/rb_color_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_footer_find"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/rb_discovery_selector"
+            android:gravity="center"
+            android:text="发现"
+            android:textSize="13sp"
+            android:textColor="@color/rb_color_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_footer_my"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/rb_my_selector"
+            android:gravity="center"
+            android:text="我的"
+            android:textSize="13sp"
+            android:textColor="@color/rb_color_selector" />
+    </RadioGroup>
+
+</LinearLayout>
