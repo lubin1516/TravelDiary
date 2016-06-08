@@ -15,7 +15,7 @@
         >
 
         <RadioButton
-            android:id="@+id/rb_footer_home"
+            android:id="@+id/rb_footer_diary"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -28,7 +28,7 @@
             android:textColor="@color/rb_color_selector" />
 
         <RadioButton
-            android:id="@+id/rb_footer_tuan"
+            android:id="@+id/rb_footer_near"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
             android:textColor="@color/rb_color_selector" />
 
         <RadioButton
-            android:id="@+id/rb_footer_find"
+            android:id="@+id/rb_footer_discovery"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
