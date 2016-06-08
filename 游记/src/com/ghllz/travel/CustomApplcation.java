@@ -1,4 +1,4 @@
-        package com.ghllz.travel;
+package com.ghllz.travel;
 
 import java.io.File;
 

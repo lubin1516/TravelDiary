@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.bmob.im.BmobChat;
 
 import com.ghllz.travel.CustomApplcation;
 import com.ghllz.travel.R;
@@ -27,7 +28,7 @@ public class BaseActivity extends FragmentActivity {
 	CustomApplcation mApplication;
 	protected int mScreenWidth;
 	protected int mScreenHeight;
-	
+
 	public static final int LEFT = 0;
 	public static final int RIGHT= 1;
 	public static enum Position{LEFT,RIGHT}
@@ -77,7 +78,7 @@ public class BaseActivity extends FragmentActivity {
 			}
 		});
 	}
-	
+
 
 	public void  setHeaderViewTitle(View headerVeiw,String title){
 		TextView  headerTv = (TextView) headerVeiw.findViewById(R.id.tv_header_view);
@@ -102,7 +103,7 @@ public class BaseActivity extends FragmentActivity {
 
 		return imageView;
 	}
-	
+
 
 	/** ¥ÚLog
 	 * ShowLog
@@ -110,7 +111,9 @@ public class BaseActivity extends FragmentActivity {
 	 * @throws
 	 */
 	public void ShowLog(String msg){
-		Log.i("life",msg);
+		if(BmobChat.DEBUG_MODE){
+			Log.i("life",msg);
+		}
 	}
 
 	public void startAnimActivity(Class<?> cla) {
