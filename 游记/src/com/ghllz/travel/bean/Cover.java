@@ -1,6 +1,6 @@
 package com.ghllz.travel.bean;
 
-public class Covers {
+public class Cover {
 	private String title;//标题
 	private String bookUrl;//详情页面Url
 	private String headImageUrl;//大图Url
