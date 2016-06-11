@@ -5,20 +5,25 @@
     android:orientation="vertical" >
 
     <!-- 标题 -->
+
     <include
         android:id="@+id/title_diary"
         layout="@layout/common_header" />
-    
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@drawable/base_horizontal_line" />
 
-    <TextView
+    <com.ghllz.travel.view.xlist.XListView
+        android:id="@+id/mListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="fragment_diary"
-        android:textSize="30sp" />
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:fadingEdgeLength="0dp"
+        android:fastScrollEnabled="true"
+        android:listSelector="@color/transparent"
+        android:transcriptMode="normal" />
 
 </LinearLayout>
