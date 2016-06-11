@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <!-- 标题 -->
+    <include
+        android:id="@+id/title_my"
+        layout="@layout/common_header" />
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/base_horizontal_line" />
+    
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
