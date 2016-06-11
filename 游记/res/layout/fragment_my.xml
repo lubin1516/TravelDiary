@@ -3,12 +3,260 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <TextView
+    
+    <!-- 标题栏 -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="fragment_my"
-        android:textSize="30sp" />
+        android:layout_height="60dp"
+        android:background="#00688B" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人中心"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffffff"
+            android:textSize="26sp" />
+        
+        <TextView
+            android:id="@+id/tv_frag_my_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:textColor="#ffffffff"
+            android:visibility="visible"
+            android:textSize="20sp" />
+        
+        <TextView
+            android:id="@+id/tv_frag_my_loginout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注销"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:textColor="#FF0000"
+            android:visibility="invisible"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    
+    
+    <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical">
+		 
+        
+        <!-- 头像 -->
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            
+            <com.ghllz.travel.view.CircleImageView
+                android:id="@+id/iv_frag_my_avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_launcher" />
+            <TextView 
+                android:id="@+id/tv_frag_my_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="用户姓名"
+            	android:textSize="16sp"/>
+            
+            
+            <!-- 游记数 和 总点击量 -->
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                
+                <!-- 游记数 -->
+                <LinearLayout 
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView 
+                        android:id="@+id/tv_frag_my_numyoujishu"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:text="1000"
+                        android:textSize="30sp"/>
+                    <TextView 
+                        android:id="@+id/tv_frag_my_youjishu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="发表的游记数量"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+                
+               
+                
+                <!-- 总点击量 -->
+                <LinearLayout 
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView 
+                        android:id="@+id/tv_frag_my_numdianzan"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:text="1000"
+                        android:textSize="30sp"/>
+                    <TextView 
+                        android:id="@+id/tv_frag_my_dianzan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="点赞数量"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+                
+            </LinearLayout>
+            
+            
+            <!-- 先留着，看后面的是否需要**************************88888 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                
+            </LinearLayout>
+            
+            
+            <!-- 我的收藏、我的游记 -->
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical">
+                <!-- 收藏 -->
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+                    <TextView 
+                        android:id="@+id/tv_frag_my_shoucang"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:text="我的收藏"
+                        android:textSize="20sp"
+                        android:gravity="center_vertical"/>
+                    <ImageView 
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_launcher"/>
+                </LinearLayout>
+                
+                <!-- 分割线 -->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/line01" />
+                
+                <!-- 游记 -->
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+                    
+                    <TextView 
+                        android:id="@+id/tv_frag_my_youji"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:text="我的游记"
+                        android:textSize="20sp"
+                        android:gravity="center_vertical"/>
+                    <ImageView 
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_launcher"
+                        />
+                    
+                </LinearLayout>
+                
+                
+                <!-- 后备看看是否需要             *************                    -->
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+                    
+                    <TextView 
+                        android:id="@+id/tv_frag_my_houbei"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:text="后备看看是否需要"
+                        android:textSize="20sp"
+                        android:gravity="center_vertical"/>
+                    <ImageView 
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_launcher"
+                        />
+                    
+                </LinearLayout>
+                
+                
+            </LinearLayout>
+            
+            
+            
+            
+		</LinearLayout>
+
+</LinearLayout>
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
 
 </LinearLayout>
