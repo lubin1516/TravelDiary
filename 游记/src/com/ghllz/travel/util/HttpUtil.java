@@ -1,6 +1,7 @@
 package com.ghllz.travel.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -12,15 +13,18 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
-import org.jsoup.select.Elements;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import com.ghllz.travel.bean.Cover;
+import com.ghllz.travel.bean.Place;
+import com.ghllz.travel.listener.OnCoversFinishListener;
+import com.ghllz.travel.listener.OnDetailContentsFinishListener;
+import com.ghllz.travel.listener.OnPlaceFinishListener;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.ghllz.travel.bean.Cover;
-import com.ghllz.travel.listener.OnCoversFinishListener;
-import com.ghllz.travel.listener.OnDetailContentsFinishListener;
+import net.sourceforge.pinyin4j.PinyinHelper;
 
 public class HttpUtil {
 
@@ -131,7 +135,75 @@ public static void getDetails(final String url,final OnDetailContentsFinishListe
 			}
 		}.execute();
 	}
-
+public static void getPlace(final OnPlaceFinishListener listener){
+    new AsyncTask<Void,Void,List<Place>>() {
+    	List<Place> list=new ArrayList<Place>();	
+    String url="http://travel.qunar.com/place/";
+		@Override
+		protected List<Place> doInBackground(Void... params) {
+			try {
+				Document doc=Jsoup.connect(url).
+		data("query","Java").userAgent("Mozilla").cookie("auth","token").timeout(3000).get();
+			Elements elements=doc.select(".sub_list");
+				for(int i=0;i<elements.size();i++){
+				  for(int j=0;j<elements.get(i).select(".link").size();j++){
+					  Place place=new Place();
+					  place.setCity(elements.get(i).select(".link").get(j).text());
+					  place.setSortLetter(getFirstChar(place.getCity()));
+					  place.setCity_url(elements.get(i).select(".link").get(j).attr("href"));
+					  list.add(place);
+				  }
+				}
+				Elements elements2=doc.select(".current").get(9).select(".listbox");
+				for(int i=0;i<elements2.size();i++){
+					for(int j=0;j<elements2.get(i).select(".link").size();j++){
+						Place place=new Place();
+						place.setCity(elements2.get(i).select(".link").get(j).text());
+						place.setSortLetter(getFirstChar(place.getCity()));
+						place.setCity_url(elements2.get(i).select(".link").get(j).attr("href"));
+						list.add(place);
+					}
+				}
+		//Log.i("doc",""+list.size());
+		Log.i("doc",""+list);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+		@Override
+		protected void onPostExecute(List<Place> result) {
+			listener.getPlace(result);;
+		}
+	}.execute();
+}
+public static String getFirstChar(String value) {  
+// 首字符  
+char firstChar = value.charAt(0);  
+// 首字母分类  
+String first = null;  
+// 是否是非汉字  
+String[] print = PinyinHelper.toHanyuPinyinStringArray(firstChar);  
+if (print == null) {  
+    // 将小写字母改成大写  
+    if ((firstChar >= 97 && firstChar <= 122)) {  
+        firstChar -= 32;  
+    }  
+    if (firstChar >= 65 && firstChar <= 90) {  
+        first = String.valueOf((char) firstChar);  
+    } else {  
+        // 认为首字符为数字或者特殊字符  
+        first = "#";  
+    }  
+} else {  
+    // 如果是中文 分类大写字母  
+    first = String.valueOf((char) (print[0].charAt(0) - 32));  
+}  
+if (first == null) {  
+    first = "?";  
+}  
+return first;  
+} 
 
 
 
