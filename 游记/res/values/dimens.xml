@@ -7,8 +7,8 @@
 	<dimen name="common_header_width">30dp</dimen>
 	<!-- 封面尺寸 -->
 	
-	<dimen name="item_diary_title_height">50dp</dimen>
-	<dimen name="item_diary_title_width">50dp</dimen>
+	<dimen name="item_diary_title_height">40dp</dimen>
+	<dimen name="item_diary_title_width">40dp</dimen>
 	
 	<dimen name="item_diary_content_height">300dp</dimen>
 	

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DiaryCoverAdapter;
@@ -24,7 +25,7 @@ import com.ghllz.travel.view.xlist.XListView;
 import com.ghllz.travel.view.xlist.XListView.IXListViewListener;
 
 public class DiaryFragment extends FragmentBase implements ICoverListView, IXListViewListener{
-
+	
 
 	CoverListPresenterImpl presenter;
 	//下拉刷新listview
@@ -33,6 +34,8 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	private List<Cover> mCoverList;
 	private View headerPic;
 	private ViewPager vp;
+
+	int lastSize=0;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -46,7 +49,6 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	public void onResume() {
 		super.onResume();
 		presenter.showCoverList();
-		mListView.addHeaderView(vp);
 	}
 
 	private void initView(View view) {
@@ -82,8 +84,9 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 
 			}
 		});
+		mListView.addHeaderView(vp);
 		// 首先不允许加载更多
-		mListView.setPullLoadEnable(false);
+		mListView.setPullLoadEnable(true);
 		// 允许下拉
 		mListView.setPullRefreshEnable(true);
 		// 设置监听器
@@ -92,7 +95,6 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		mListView.setDividerHeight(0);
 		mAdapter = new DiaryCoverAdapter(getActivity(),mCoverList);
 		mListView.setAdapter(mAdapter);
-
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -108,16 +110,23 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	@Override
 	public void showCoverList(List<Cover> covers) {
 		mAdapter.addAll(covers);
+		mListView.stopRefresh();
+		mListView.stopLoadMore();
+		mListView.setSelection(lastSize);
+		lastSize = mListView.getChildCount();
 	}
 
 	@Override
 	public void onRefresh() {
-		presenter.showCoverList();
+		
 	}
 
 	@Override
 	public void onLoadMore() {
-
+		if(mListView.getPullLoading()){
+			return;
+		}
+		presenter.showCoverList();
 	}
 
 	private class MyAdpater extends PagerAdapter{
@@ -126,14 +135,14 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 
 		public MyAdpater(){
 			ids = new ArrayList<Integer>();
-			ids.add(R.layout.list_pics_1);
-			ids.add(R.layout.list_pics_2);
-			ids.add(R.layout.list_pics_3);
+			ids.add(R.drawable.diary_list_pics_1);
+			ids.add(R.drawable.diary_list_pics_2);
+			ids.add(R.drawable.diary_list_pics_3);
 		}
 
 		@Override
 		public int getCount() {
-			return 3000;
+			return 3;
 		}
 
 		@Override
@@ -145,16 +154,18 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		public Object instantiateItem(ViewGroup container, int position) {
 
 			int layoutid = ids.get(position%3);
-			View view = getActivity().getLayoutInflater().inflate(layoutid, vp,false);
-			ImageView image = (ImageView) view.findViewById(R.id.iv_pics_list);
+			ShowLog(layoutid+"");
+			ImageView image = new ImageView(getActivity());
+			image.setImageResource(layoutid);
+			image.setScaleType(ScaleType.FIT_XY);
 			image.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 
 				}
 			});
-			container.addView(view);
-			return view;
+			container.addView(image);
+			return image;
 		}
 
 		@Override
