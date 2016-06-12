@@ -1,14 +1,14 @@
 package com.ghllz.travel.presenter;
 
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 
-import com.ghllz.travel.R;
+import com.ghllz.travel.bean.Cover;
+import com.ghllz.travel.listener.OnCoversFinishListener;
 import com.ghllz.travel.model.CoverListModelImpl;
 import com.ghllz.travel.model.ICoverListModel;
-import com.ghllz.travel.ui.BaseActivity.Position;
 import com.ghllz.travel.ui.ICoverListView;
 
 public class CoverListPresenterImpl implements ICoverListPresenter{
@@ -31,7 +31,13 @@ public class CoverListPresenterImpl implements ICoverListPresenter{
 
 	@Override
 	public void showCoverList() {
-
+		model.getCoverList(new OnCoversFinishListener() {
+			
+			@Override
+			public void onGetCovers(List<Cover> Covers) {
+				view.showCoverList(Covers);
+			}
+		});
 	}
 
 	@Override

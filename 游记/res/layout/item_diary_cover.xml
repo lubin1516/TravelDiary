@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
-    android:orientation="vertical" >
+    android:layout_height="420dp"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp" 
+    android:background="@color/msg_chat_bg">
 
     <View
         android:layout_width="match_parent"
@@ -13,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:gravity="center_vertical"
+     	android:background="@color/white"
         android:orientation="horizontal" >
 
         <com.ghllz.travel.view.CircleImageView
@@ -45,6 +49,7 @@
             android:id="@+id/iv_diary_cover_headImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="fitXY"
             android:src="@color/gray" />
 
         <TextView
@@ -52,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="2014-06-30"
             android:textColor="@color/white"
             android:textSize="13sp" />
@@ -62,35 +67,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="泰国芭提雅、清迈、曼谷十天之旅"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:gravity="right"
         android:orientation="horizontal" >
-
-        <ImageView
-            android:id="@+id/iv_diary_cover_days"
-            android:layout_width="@dimen/item_diary_bottum_height"
-            android:layout_height="@dimen/item_diary_bottum_width"
-            android:layout_margin="@dimen/item_diary_bottum_margin"
-            android:src="@drawable/collect_time" />
-
-        <TextView
-            android:id="@+id/tv_diary_cover_days"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/item_diary_bottum_height"
-            android:layout_margin="@dimen/item_diary_bottum_margin"
-            android:gravity="bottom"
-            android:text="0"
-            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/iv_diary_cover_like"
@@ -108,6 +98,21 @@
             android:text="0"
             android:textSize="13sp" />
 
+        <ImageView
+            android:id="@+id/iv_diary_cover_days"
+            android:layout_width="@dimen/item_diary_bottum_height"
+            android:layout_height="@dimen/item_diary_bottum_width"
+            android:layout_margin="@dimen/item_diary_bottum_margin"
+            android:src="@drawable/collect_time" />
+
+        <TextView
+            android:id="@+id/tv_diary_cover_days"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_diary_bottum_height"
+            android:layout_margin="@dimen/item_diary_bottum_margin"
+            android:gravity="bottom"
+            android:text="0天"
+            android:textSize="13sp" />
     </LinearLayout>
 
     <View

@@ -7,7 +7,7 @@ public class CoverListModelImpl implements ICoverListModel{
 
 	@Override
 	public void getCoverList(OnCoversFinishListener listener) {
-		HttpUtil.getCoversResponse("ÂÃÓÎ",1,listener);
+		HttpUtil.getCoversResponse("",1,listener);
 	}
 
 }
