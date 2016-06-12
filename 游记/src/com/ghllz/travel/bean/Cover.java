@@ -1,13 +1,25 @@
 package com.ghllz.travel.bean;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable
 public class Cover {
+	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String title;//标题
+	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String bookUrl;//详情页面Url
+	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String headImageUrl;//大图Url
+	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String startTime;//开始时间
+	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String days;//天数
+	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String likeCount;//点赞数量
+	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String userName;//作者名
+	@DatabaseField
 	private String userHeadImgUrl;//作者头像
 	public String getTitle() {
 		return title;
