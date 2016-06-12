@@ -107,7 +107,7 @@ public class CustomApplcation extends Application {
 	/** 初始化ImageLoader */
 	public static void initImageLoader(Context context) {
 		File cacheDir = StorageUtils.getOwnCacheDirectory(context,
-				"bmobim/Cache");// 获取到缓存的目录地址
+				"travel/Cache");// 获取到缓存的目录地址
 		// 创建配置ImageLoader(所有的选项都是可选的,只使用那些你真的想定制)，这个可以设定在APPLACATION里面，设置为全局的配置参数
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
 				context)

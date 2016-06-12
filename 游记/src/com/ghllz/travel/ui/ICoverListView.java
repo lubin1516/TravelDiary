@@ -4,6 +4,6 @@ import java.util.List;
 
 import com.ghllz.travel.bean.Cover;
 
-public interface ICoverListView extends IView {
+public interface ICoverListView  {
 	void showCoverList(List<Cover> covers);
 }

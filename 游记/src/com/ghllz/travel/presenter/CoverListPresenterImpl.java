@@ -23,14 +23,6 @@ public class CoverListPresenterImpl implements ICoverListPresenter{
 
 	@Override
 	public void onResume() {
-		view.setHeaderViewTitle("сн╪г");
-		view.setHeaderViewImage(R.drawable.message_icon,Position.RIGHT,new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-			}
-		});
 	}
 
 	@Override

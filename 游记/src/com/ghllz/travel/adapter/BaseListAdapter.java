@@ -14,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
-import cn.bmob.im.util.BmobLog;
 
 /**
  * »ù´¡µÄÊÊÅäÆ÷
@@ -144,15 +143,6 @@ public abstract class BaseListAdapter<E> extends BaseAdapter {
 			});
 
 		}
-	}
-
-	/**
-	 * ´òLog ShowLog
-	 * @return void
-	 * @throws
-	 */
-	public void ShowLog(String msg) {
-		BmobLog.i(msg);
 	}
 
 }
