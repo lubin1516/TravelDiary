@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import com.ghllz.travel.listener.OnDetailContentsFinishListener;
 
 public class HttpUtil {
 
-	public static void getCoversResponse(final String city,final int pages,
+	public static void getCoversResponse(final String city,final int page,
 			final OnCoversFinishListener listener) {
 		new AsyncTask<Void, Void,List<Cover>>() {
 			@Override
@@ -32,10 +33,10 @@ public class HttpUtil {
 				BufferedReader reader = null;
 				String result = null;
 				StringBuffer sbf = null;
-				for(int p=1;p<pages+1;p++){
-					String httpUrl = "http://apis.baidu.com/qunartravel/travellist/travellist"
-							+ "?" + "query="+city+"&page="+String.valueOf(p);
-					try {
+				try {
+				       String c=URLEncoder.encode(city, "utf-8");
+				       String httpUrl = "http://apis.baidu.com/qunartravel/travellist/travellist"
+						+ "?query=%22%22"+c+"&page="+String.valueOf(page);
 						URL url = new URL(httpUrl);
 						HttpURLConnection connection = (HttpURLConnection) url
 								.openConnection();
@@ -71,7 +72,6 @@ public class HttpUtil {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}
 				//  Log.i("TAG","LIST="+list);
 				return list;
 			}
