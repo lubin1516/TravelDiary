@@ -113,6 +113,7 @@ public class CustomApplcation extends Application {
 				context)
 		// 线程池内加载的数量
 		.threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
+		.memoryCacheSize(10*1024*1024)
 		.memoryCache(new WeakMemoryCache())
 		.denyCacheImageMultipleSizesInMemory()
 		.discCacheFileNameGenerator(new Md5FileNameGenerator())

@@ -51,4 +51,9 @@ public class DBUtil {
             return null;//throw和return随便选一个
         }
     }
+    //参数为页数，1个页数等于10个cover,这个方法要是通过page参数得到相应的
+    //cover集合,也就说这些cover集合里包含page这个属性
+    public List<Cover> query(int page){
+        return null;
+    }
 }

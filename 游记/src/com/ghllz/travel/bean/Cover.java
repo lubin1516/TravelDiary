@@ -21,6 +21,14 @@ public class Cover {
 	private String userName;//作者名
 	@DatabaseField
 	private String userHeadImgUrl;//作者头像
+	@DatabaseField
+	private int page;
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
 	private String aboutTravel;//关于旅程
 	public String getTitle() {
 		return title;
@@ -76,14 +84,14 @@ public class Cover {
 	public void setAboutTravel(String aboutTravel) {
 		this.aboutTravel = aboutTravel;
 	}
+	
 	@Override
 	public String toString() {
 		return "Cover [title=" + title + ", bookUrl=" + bookUrl
 				+ ", headImageUrl=" + headImageUrl + ", startTime=" + startTime
 				+ ", days=" + days + ", likeCount=" + likeCount + ", userName="
-				+ userName + ", userHeadImgUrl=" + userHeadImgUrl
-				+ ", aboutTravel=" + aboutTravel + "]";
+				+ userName + ", userHeadImgUrl=" + userHeadImgUrl + ", page="
+				+ page + ", aboutTravel=" + aboutTravel + "]";
 	}
-	
 	
 }
