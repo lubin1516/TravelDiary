@@ -1,6 +1,11 @@
 package com.ghllz.travel.ui;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -8,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.ghllz.travel.R;
+import com.ghllz.travel.service.DiaryService;
 import com.ghllz.travel.ui.fragment.DiaryFragment;
 import com.ghllz.travel.ui.fragment.DiscoveryFragment;
 import com.ghllz.travel.ui.fragment.MyFragment;
@@ -26,6 +32,7 @@ public class MainActivity extends BaseActivity {
 	private Fragment[] fragments;
 	private int index;
 	private int currentIndex;
+	private Intent intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +40,19 @@ public class MainActivity extends BaseActivity {
 		setContentView(R.layout.activity_main);
 		initFraments();
 		initFooterView();
+		initServer();
 	}
 	
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		stopService(intent);
 	}
 	
 	private void initFraments(){
@@ -74,4 +88,9 @@ public class MainActivity extends BaseActivity {
 		});
 	}
 
+	private void initServer() {
+		intent = new Intent(this,DiaryService.class);
+		startService(intent);
+	}
+	
 }

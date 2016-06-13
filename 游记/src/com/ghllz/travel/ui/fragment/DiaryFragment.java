@@ -3,6 +3,10 @@ package com.ghllz.travel.ui.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -19,6 +23,7 @@ import android.widget.ImageView.ScaleType;
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DiaryCoverAdapter;
 import com.ghllz.travel.bean.Cover;
+import com.ghllz.travel.config.Config;
 import com.ghllz.travel.presenter.CoverListPresenterImpl;
 import com.ghllz.travel.ui.ICoverListView;
 import com.ghllz.travel.view.xlist.XListView;
@@ -36,12 +41,14 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	private ViewPager vp;
 
 	int lastSize=0;
+	private MyReceiver myReceiver;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_diary, container, false);
 		initView(view);
 		initXListView();
+		initReceiver();
 		return view;
 	}
 
@@ -105,6 +112,13 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 
 		});
 	}
+	
+	private void initReceiver() {
+		myReceiver = new MyReceiver();
+		IntentFilter intentFilter= new IntentFilter();
+		intentFilter.addAction(Config.CHANGE_VIEWPAGER);
+		getActivity().registerReceiver(myReceiver, intentFilter);
+	}
 
 
 	@Override
@@ -127,6 +141,11 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 			return;
 		}
 		presenter.showCoverList();
+	}
+	
+	@Override
+	public void changeViewPager(int order) {
+		vp.setCurrentItem(order%3);
 	}
 
 	private class MyAdpater extends PagerAdapter{
@@ -171,6 +190,16 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		@Override
 		public void destroyItem(ViewGroup container, int position, Object object) {
 			container.removeView((View)object);
+		}
+	}
+	
+	public class MyReceiver extends BroadcastReceiver{
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String action = intent.getAction();
+			if(action.equals(Config.CHANGE_VIEWPAGER)){
+				changeViewPager(intent.getIntExtra("order",0));
+			}
 		}
 	}
 }

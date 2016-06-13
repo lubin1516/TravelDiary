@@ -129,6 +129,12 @@
                 </action>
             </intent-filter>
         </service>
+        
+        <service
+            android:name="com.ghllz.travel.service.DiaryService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
