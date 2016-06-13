@@ -74,7 +74,7 @@ public class HttpUtil {
 							Document doc=Jsoup.connect(Cover.getBookUrl())
 									.userAgent("Mozilla").timeout(3000).post();
 							Elements elements=doc.select(".main_leftbox").first().select(".text");
-							Cover.setAboutTravel(elements.text());
+							Cover.setAboutTravel("\t\t"+elements.text());
 							list.add(Cover);
 						}
 					} catch (Exception e) {
