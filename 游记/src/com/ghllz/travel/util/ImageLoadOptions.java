@@ -34,7 +34,7 @@ public class ImageLoadOptions {
 				.resetViewBeforeLoading(true)// 设置图片在下载前是否重置，复位
 				// .displayer(new RoundedBitmapDisplayer(20))//是否设置为圆角，弧度为多少
 				.displayer(new FadeInBitmapDisplayer(100))// 淡入
-				.imageScaleType(ImageScaleType.EXACTLY)
+				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
 				.build();
 		
 		return options;
