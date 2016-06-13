@@ -10,7 +10,7 @@
 	<dimen name="item_diary_title_height">40dp</dimen>
 	<dimen name="item_diary_title_width">40dp</dimen>
 	
-	<dimen name="item_diary_content_height">300dp</dimen>
+	<dimen name="item_diary_content_height">250dp</dimen>
 	
 	<dimen name="item_diary_bottum_height">20dp</dimen>
 	<dimen name="item_diary_bottum_width">20dp</dimen>

@@ -32,6 +32,8 @@ public class DiaryCoverAdapter extends BaseListAdapter<Cover> {
 		TextView title = ViewHolder.get(convertView, R.id.tv_diary_cover_title);
 		TextView time = ViewHolder.get(convertView, R.id.tv_diary_cover_time);
 		TextView userName = ViewHolder.get(convertView, R.id.tv_diary_cover_userName);
+		TextView content = ViewHolder.get(convertView, R.id.tv_diary_cover_content);
+		
 		ImageView headImage = ViewHolder.get(convertView, R.id.iv_diary_cover_headImage);
 		CircleImageView userHeaderImage = ViewHolder.get(convertView, R.id.cv_diary_cover_userHeadImg);
 
@@ -52,6 +54,7 @@ public class DiaryCoverAdapter extends BaseListAdapter<Cover> {
 		likeNume.setText(cover.getLikeCount());
 		title.setText(cover.getTitle());
 		time.setText(cover.getStartTime());
+		content.setText(cover.getAboutTravel());
 		return convertView;
 	}
 

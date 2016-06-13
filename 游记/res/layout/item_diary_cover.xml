@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="420dp"
+    android:layout_height="450dp"
+    android:background="@color/msg_chat_bg"
     android:orientation="vertical"
     android:paddingBottom="10dp"
-    android:paddingTop="10dp" 
-    android:background="@color/msg_chat_bg">
+    android:paddingTop="10dp" >
 
     <View
         android:layout_width="match_parent"
@@ -15,8 +15,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="@color/white"
         android:gravity="center_vertical"
-     	android:background="@color/white"
         android:orientation="horizontal" >
 
         <com.ghllz.travel.view.CircleImageView
@@ -75,10 +75,20 @@
             android:textSize="18sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <TextView 
+        android:id="@+id/tv_diary_cover_content"
+        android:layout_width="match_parent" 
+        android:layout_height="80dp"
         android:background="@color/white"
+        android:lines="4"
+        android:ellipsize="end"
+        android:textSize="16sp"
+        />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:background="@color/white"
         android:gravity="right"
         android:orientation="horizontal" >
 
