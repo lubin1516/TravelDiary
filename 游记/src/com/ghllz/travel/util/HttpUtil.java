@@ -71,6 +71,10 @@ public class HttpUtil {
 							Cover.setHeadImageUrl(js.getString("headImage"));
 							Cover.setUserHeadImgUrl(js.getString("userHeadImg"));
 							Cover.setUserName(js.getString("userName"));
+							Document doc=Jsoup.connect(Cover.getBookUrl())
+									.userAgent("Mozilla").timeout(3000).post();
+							Elements elements=doc.select(".main_leftbox").first().select(".text");
+							Cover.setAboutTravel(elements.text());
 							list.add(Cover);
 						}
 					} catch (Exception e) {

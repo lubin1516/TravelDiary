@@ -21,6 +21,7 @@ public class Cover {
 	private String userName;//作者名
 	@DatabaseField
 	private String userHeadImgUrl;//作者头像
+	private String aboutTravel;//关于旅程
 	public String getTitle() {
 		return title;
 	}
@@ -69,12 +70,20 @@ public class Cover {
 	public void setUserHeadImgUrl(String userHeadImgUrl) {
 		this.userHeadImgUrl = userHeadImgUrl;
 	}
+	public String getAboutTravel() {
+		return aboutTravel;
+	}
+	public void setAboutTravel(String aboutTravel) {
+		this.aboutTravel = aboutTravel;
+	}
 	@Override
 	public String toString() {
-		return "covers [title=" + title + ", bookUrl=" + bookUrl
+		return "Cover [title=" + title + ", bookUrl=" + bookUrl
 				+ ", headImageUrl=" + headImageUrl + ", startTime=" + startTime
 				+ ", days=" + days + ", likeCount=" + likeCount + ", userName="
-				+ userName + ", userHeadImgUrl=" + userHeadImgUrl + "]";
+				+ userName + ", userHeadImgUrl=" + userHeadImgUrl
+				+ ", aboutTravel=" + aboutTravel + "]";
 	}
+	
 	
 }
