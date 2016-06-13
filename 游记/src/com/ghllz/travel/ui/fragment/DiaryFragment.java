@@ -41,7 +41,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	private ViewPager vp;
 
 	int lastSize=0;
-	private MyReceiver myReceiver;
+	private DiaryReceiver myReceiver;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -58,6 +58,11 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		presenter.showCoverList();
 	}
 
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		getActivity().unregisterReceiver(myReceiver);
+	}
 	private void initView(View view) {
 		presenter = new CoverListPresenterImpl(this);
 		mListView = (XListView)view.findViewById(R.id.mListView);
@@ -114,7 +119,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	}
 	
 	private void initReceiver() {
-		myReceiver = new MyReceiver();
+		myReceiver = new DiaryReceiver();
 		IntentFilter intentFilter= new IntentFilter();
 		intentFilter.addAction(Config.CHANGE_VIEWPAGER);
 		getActivity().registerReceiver(myReceiver, intentFilter);
@@ -193,7 +198,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		}
 	}
 	
-	public class MyReceiver extends BroadcastReceiver{
+	public class DiaryReceiver extends BroadcastReceiver{
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
