@@ -1,10 +1,16 @@
 package com.ghllz.travel.bean;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable
 public class Place {
-private String city;
-private String city_url;
-private String sortLetter;
+	@DatabaseField
+	private String city;
+	@DatabaseField
+	private String city_url;
+	@DatabaseField
+	private String sortLetter;
 public String getCity() {
 	return city;
 }

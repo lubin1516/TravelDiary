@@ -4,19 +4,22 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ghllz.travel.bean.Cover;
+import com.ghllz.travel.bean.Place;
 import com.j256.ormlite.dao.Dao;
 
 import android.content.Context;
 
 public class DBUtil {
+	
 
 	DBHelper dbhelper;
-    private Dao<Cover, String> dao;
+    private Dao<Cover, String> dao_cover;
+    private Dao<Place, String> dao_place;
 
     public DBUtil(Context context){
         dbhelper = DBHelper.getInstance(context);
         try {
-            dao = dbhelper.getDao(Cover.class);
+        	dao_cover = dbhelper.getDao(Cover.class);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -25,7 +28,7 @@ public class DBUtil {
 
     public void add(Cover bean){
         try {
-            dao.create(bean);
+        	dao_cover.create(bean);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -34,7 +37,7 @@ public class DBUtil {
 
     public void remove(Cover bean){
         try {
-            dao.delete(bean);
+        	dao_cover.delete(bean);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -43,7 +46,7 @@ public class DBUtil {
 
     public List<Cover> query(){
         try {
-            return dao.queryForAll();
+            return dao_cover.queryForAll();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
