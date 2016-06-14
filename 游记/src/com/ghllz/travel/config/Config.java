@@ -12,4 +12,5 @@ public class Config {
 	public static String applicationId = "05d56f1d71ca4467da374081b91f0dc4";
 	
 	public static String CHANGE_VIEWPAGER = "change_view_pager";
+	
 }

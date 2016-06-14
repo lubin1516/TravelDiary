@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.ghllz.travel.CustomApplcation;
 import com.ghllz.travel.bean.Cover;
@@ -36,6 +35,7 @@ public class CoverListPresenterImpl implements ICoverListPresenter{
 
 	@Override
 	public void showCoverList() {
+//		view.showCoverList(dbUtil.query());
 		model.getCoverList(new OnCoversFinishListener() {
 			@Override
 			public void onGetCovers(List<Cover> Covers) {

@@ -72,10 +72,10 @@ public class HttpUtil {
 							Cover.setUserHeadImgUrl(js.getString("userHeadImg"));
 							Cover.setUserName(js.getString("userName"));
 							Cover.setPage(page);
-							Document doc=Jsoup.connect(Cover.getBookUrl())
-									.userAgent("Mozilla").timeout(3000).post();
-							Elements elements=doc.select(".main_leftbox").first().select(".text");
-							Cover.setAboutTravel("\t\t"+elements.text());
+//							Document doc=Jsoup.connect(Cover.getBookUrl())
+//									.userAgent("Mozilla").timeout(3000).post();
+//							Elements elements=doc.select(".main_leftbox").first().select(".text");
+//							Cover.setAboutTravel("\t\t"+elements.text());
 							list.add(Cover);
 						}
 					} catch (Exception e) {

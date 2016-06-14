@@ -17,6 +17,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.ghllz.travel.CustomApplcation;
 import com.ghllz.travel.R;
 import com.ghllz.travel.config.Config;
+import com.ghllz.travel.util.MImageLoader;
 
 /**
  * 引导页
@@ -47,6 +48,7 @@ public class SplashActivity extends BaseActivity {
 		//请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
 		BmobChat.getInstance(this).init(Config.applicationId);
 		// 开启定位
+		MImageLoader.init(this);
 		initLocClient();
 		// 注册地图 SDK 广播监听者
 		IntentFilter iFilter = new IntentFilter();

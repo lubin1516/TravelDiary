@@ -48,6 +48,7 @@ public abstract class BaseListAdapter<E> extends BaseAdapter {
 	}
 
 	public void addAll(List<E> list) {
+		this.list.clear();
 		this.list.addAll(list);
 		notifyDataSetChanged();
 	}
