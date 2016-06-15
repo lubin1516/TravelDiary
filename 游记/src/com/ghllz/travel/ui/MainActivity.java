@@ -93,4 +93,8 @@ public class MainActivity extends BaseActivity {
 		startService(intent);
 	}
 	
+	@Override  
+	public void onSaveInstanceState(Bundle outState) {  
+//	    super.onSaveInstanceState(outState);  
+	}
 }

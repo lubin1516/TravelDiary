@@ -24,6 +24,11 @@ public class CoverListPresenterImpl implements ICoverListPresenter{
 		this.model = new CoverListModelImpl();
 		this.dbUtil = new DBUtil(CustomApplcation.getInstance());
 	}
+	
+	@Override
+	public void onCreate() {
+		
+	}
 
 	@Override
 	public void onResume() {

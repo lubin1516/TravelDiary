@@ -1,10 +1,12 @@
 package com.ghllz.travel.bean;
 
+import java.io.Serializable;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-public class Cover {
+public class Cover implements Serializable{
 	@DatabaseField(canBeNull=false)//该项内容不能为空
 	private String title;//标题
 	@DatabaseField(canBeNull=false)//该项内容不能为空

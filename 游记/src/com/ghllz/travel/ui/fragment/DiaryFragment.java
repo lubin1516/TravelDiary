@@ -25,6 +25,7 @@ import com.ghllz.travel.adapter.DiaryCoverAdapter;
 import com.ghllz.travel.bean.Cover;
 import com.ghllz.travel.config.Config;
 import com.ghllz.travel.presenter.CoverListPresenterImpl;
+import com.ghllz.travel.ui.DetailDiaryActivity;
 import com.ghllz.travel.ui.ICoverListView;
 import com.ghllz.travel.view.xlist.XListView;
 import com.ghllz.travel.view.xlist.XListView.IXListViewListener;
@@ -100,7 +101,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		// 首先不允许加载更多
 		mListView.setPullLoadEnable(true);
 		// 允许下拉
-		mListView.setPullRefreshEnable(true);
+		mListView.setPullRefreshEnable(false);
 		// 设置监听器
 		mListView.setXListViewListener(this);
 		mListView.pullRefreshing();
@@ -110,9 +111,11 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-
+			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+				Cover item = (Cover) mAdapter.getItem(position);
+				Intent intent = new Intent(getActivity(),DetailDiaryActivity.class);
+				intent.putExtra("Cover", item);
+				startActivity(intent);
 			}
 
 		});
@@ -185,7 +188,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 			image.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-
+					
 				}
 			});
 			container.addView(image);
