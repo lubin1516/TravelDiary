@@ -23,7 +23,7 @@ import android.widget.ImageView.ScaleType;
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DiaryCoverAdapter;
 import com.ghllz.travel.bean.Cover;
-import com.ghllz.travel.config.Config;
+import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.presenter.CoverListPresenterImpl;
 import com.ghllz.travel.ui.DetailDiaryActivity;
 import com.ghllz.travel.ui.ICoverListView;
@@ -112,9 +112,9 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				Cover item = (Cover) mAdapter.getItem(position);
+				Cover item = (Cover) mAdapter.getItem(position-2);
 				Intent intent = new Intent(getActivity(),DetailDiaryActivity.class);
-				intent.putExtra("Cover", item);
+				intent.putExtra(Configs.COVER, item);
 				startActivity(intent);
 			}
 
@@ -124,7 +124,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	private void initReceiver() {
 		myReceiver = new DiaryReceiver();
 		IntentFilter intentFilter= new IntentFilter();
-		intentFilter.addAction(Config.CHANGE_VIEWPAGER);
+		intentFilter.addAction(Configs.CHANGE_VIEWPAGER);
 		getActivity().registerReceiver(myReceiver, intentFilter);
 	}
 
@@ -205,7 +205,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
-			if(action.equals(Config.CHANGE_VIEWPAGER)){
+			if(action.equals(Configs.CHANGE_VIEWPAGER)){
 				changeViewPager(intent.getIntExtra("order",0));
 			}
 		}

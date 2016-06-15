@@ -16,6 +16,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.SDKInitializer;
+import com.ghllz.travel.util.MImageLoader;
 import com.ghllz.travel.util.SharePreferenceUtil;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -43,6 +44,7 @@ public class CustomApplcation extends Application {
 	public void onCreate() {
 		super.onCreate();
 		// 是否开启debug模式--默认开启状态
+		MImageLoader.init(this);
 		BmobChat.DEBUG_MODE = true;
 		mInstance = this;
 		init();

@@ -36,7 +36,7 @@ public class DetailListPresenterImpl implements IDetailListPresenter{
 		model.getDetailContent(Url, new OnDetailContentFinishListener() {
 			@Override
 			public void onGetDetailContents(DetailBean result) {
-				
+				view.showDetailList(result.getDayInfo(),result.getPlanBox());
 			}
 		});
 	}

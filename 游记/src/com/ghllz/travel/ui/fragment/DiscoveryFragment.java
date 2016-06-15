@@ -23,7 +23,7 @@ import android.widget.ImageView.ScaleType;
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DiaryCoverAdapter;
 import com.ghllz.travel.bean.Cover;
-import com.ghllz.travel.config.Config;
+import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.ui.BaseActivity.Position;
 import com.ghllz.travel.view.xlist.XListView;
 import com.ghllz.travel.view.xlist.XListView.IXListViewListener;
@@ -122,7 +122,7 @@ public class DiscoveryFragment extends FragmentBase implements IXListViewListene
 	private void initReceiver() {
 		myReceiver = new DiscoveryReceiver();
 		IntentFilter intentFilter= new IntentFilter();
-		intentFilter.addAction(Config.CHANGE_VIEWPAGER);
+		intentFilter.addAction(Configs.CHANGE_VIEWPAGER);
 		getActivity().registerReceiver(myReceiver, intentFilter);
 	}
 
@@ -195,7 +195,7 @@ public class DiscoveryFragment extends FragmentBase implements IXListViewListene
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
-			if(action.equals(Config.CHANGE_VIEWPAGER)){
+			if(action.equals(Configs.CHANGE_VIEWPAGER)){
 				changeViewPager(intent.getIntExtra("order",0));
 			}
 		}

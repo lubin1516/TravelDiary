@@ -29,7 +29,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.ghllz.travel.CustomApplcation;
-import com.ghllz.travel.config.Config;
+import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.util.DiskLruCache.Editor;
 import com.ghllz.travel.util.DiskLruCache.Snapshot;
 

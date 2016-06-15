@@ -16,12 +16,16 @@
 	<dimen name="item_diary_bottum_width">20dp</dimen>
 	<dimen name="item_diary_bottum_margin">5dp</dimen>
 	
-	<dimen name="header_scroll_pic_height">60dp</dimen>
-	<dimen name="header_scroll_pic_width">60dp</dimen>
-	<dimen name="header_scroll_pic_margin">14dp</dimen>
+	<dimen name="header_scroll_pic_height">50dp</dimen>
+	<dimen name="header_scroll_pic_width">50dp</dimen>
+	<dimen name="header_scroll_pic_margin">16dp</dimen>
 	<dimen name="header_scroll_pic_margin_top">10dp</dimen>
-	<dimen name="header_scroll_text_size">16dp</dimen>
+	<dimen name="header_scroll_text_size">15dp</dimen>
 	<dimen name="header_scroll_ll_height">200dp</dimen>
-	<dimen name="header_scroll_item_ll_height">90dp</dimen>
+	<dimen name="header_scroll_item_ll_height">80dp</dimen>
+	
+	<dimen name="detail_diary_title_height">40dp</dimen>
+	<dimen name="detail_diary_title_width">40dp</dimen>
+	
 	
 </resources>

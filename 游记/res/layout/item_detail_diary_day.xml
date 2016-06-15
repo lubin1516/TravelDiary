@@ -2,20 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    >
-    
+    android:orientation="vertical" >
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@drawable/base_horizontal_line" />
 
-    <ListView 
-        android:id="@+id/lv_detail_diary_item"
+    <TextView
+        android:id="@+id/tv_detail_day_index"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        android:gravity="center"
+        android:text="第一天"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <ListView
+        android:id="@+id/lv_detail_day_Fcontainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:divider="@null"
-        android:listSelector="@color/transparent"
-        ></ListView>
+        android:listSelector="@color/transparent" >
+    </ListView>
+
 </LinearLayout>

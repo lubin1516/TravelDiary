@@ -3,7 +3,7 @@ package com.ghllz.travel.service;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.ghllz.travel.config.Config;
+import com.ghllz.travel.config.Configs;
 
 import android.app.Service;
 import android.content.Context;
@@ -28,7 +28,7 @@ public class DiaryService extends Service {
 			@Override
 			public void run() {
 				order++;
-				Intent intent = new Intent(Config.CHANGE_VIEWPAGER);
+				Intent intent = new Intent(Configs.CHANGE_VIEWPAGER);
 				intent.putExtra("order", order);
 				sendBroadcast(intent);
 			}
