@@ -34,6 +34,10 @@ public abstract class FragmentBase extends Fragment {
 	public void runOnUiThread(Runnable action) {
 		handler.post(action);
 	}
+	
+	public void runOnUiThread(Runnable action,long time){
+		handler.postAtTime(action,time);
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

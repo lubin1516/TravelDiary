@@ -65,14 +65,14 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	}
 	private void initView(View view) {
 		presenter = new CoverListPresenterImpl(this);
-		mListView = (XListView)view.findViewById(R.id.mListView);
+		mListView = (XListView)view.findViewById(R.id.lv_diary);
 		mCoverList = new ArrayList<Cover>();
 	}
 
 
 	private void initXListView() {
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		headerPic = inflater.inflate(R.layout.header_list_pic, mListView,false);
+		headerPic = inflater.inflate(R.layout.header_view_pager_pic, mListView,false);
 		vp = (ViewPager) headerPic.findViewById(R.id.vp_header_pics);
 		MyAdpater vpAdapter = new MyAdpater();
 		vp.setAdapter(vpAdapter);

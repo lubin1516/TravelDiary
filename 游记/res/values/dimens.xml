@@ -3,8 +3,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-	<dimen name="common_header_height">30dp</dimen>
-	<dimen name="common_header_width">30dp</dimen>
+	<dimen name="common_header_height">20dp</dimen>
+	<dimen name="common_header_width">20dp</dimen>
 	<!-- 封面尺寸 -->
 	
 	<dimen name="item_diary_title_height">40dp</dimen>
@@ -15,4 +15,13 @@
 	<dimen name="item_diary_bottum_height">20dp</dimen>
 	<dimen name="item_diary_bottum_width">20dp</dimen>
 	<dimen name="item_diary_bottum_margin">5dp</dimen>
+	
+	<dimen name="header_scroll_pic_height">60dp</dimen>
+	<dimen name="header_scroll_pic_width">60dp</dimen>
+	<dimen name="header_scroll_pic_margin">14dp</dimen>
+	<dimen name="header_scroll_pic_margin_top">10dp</dimen>
+	<dimen name="header_scroll_text_size">16dp</dimen>
+	<dimen name="header_scroll_ll_height">200dp</dimen>
+	<dimen name="header_scroll_item_ll_height">90dp</dimen>
+	
 </resources>
