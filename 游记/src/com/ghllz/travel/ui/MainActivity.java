@@ -16,6 +16,7 @@ import com.ghllz.travel.ui.fragment.DiaryFragment;
 import com.ghllz.travel.ui.fragment.DiscoveryFragment;
 import com.ghllz.travel.ui.fragment.MyFragment;
 import com.ghllz.travel.ui.fragment.NearFragment;
+import com.ghllz.travel.util.MImageLoader;
 
 public class MainActivity extends BaseActivity {
 
@@ -52,6 +53,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
+		MImageLoader.MemCache.evictAll();
 	}
 
 	@Override
