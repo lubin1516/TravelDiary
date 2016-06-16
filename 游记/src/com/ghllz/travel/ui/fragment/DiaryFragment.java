@@ -31,7 +31,7 @@ import com.ghllz.travel.view.xlist.XListView;
 import com.ghllz.travel.view.xlist.XListView.IXListViewListener;
 
 public class DiaryFragment extends FragmentBase implements ICoverListView, IXListViewListener{
-	
+
 
 	CoverListPresenterImpl presenter;
 	//ÏÂÀ­Ë¢ÐÂlistview
@@ -120,7 +120,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 
 		});
 	}
-	
+
 	private void initReceiver() {
 		myReceiver = new DiaryReceiver();
 		IntentFilter intentFilter= new IntentFilter();
@@ -131,16 +131,18 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 
 	@Override
 	public void showCoverList(List<Cover> covers) {
+		mCoverList.addAll(covers);
 		mAdapter.addAll(covers);
 		mListView.stopRefresh();
 		mListView.stopLoadMore();
 		mListView.setSelection(lastSize);
 		lastSize = mListView.getChildCount();
+
 	}
 
 	@Override
 	public void onRefresh() {
-		
+
 	}
 
 	@Override
@@ -150,7 +152,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		}
 		presenter.showCoverList();
 	}
-	
+
 	@Override
 	public void changeViewPager(int order) {
 		vp.setCurrentItem(order%3);
@@ -181,14 +183,13 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		public Object instantiateItem(ViewGroup container, int position) {
 
 			int layoutid = ids.get(position%3);
-			ShowLog(layoutid+"");
 			ImageView image = new ImageView(getActivity());
 			image.setImageResource(layoutid);
 			image.setScaleType(ScaleType.FIT_XY);
 			image.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					
+
 				}
 			});
 			container.addView(image);
@@ -200,7 +201,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 			container.removeView((View)object);
 		}
 	}
-	
+
 	public class DiaryReceiver extends BroadcastReceiver{
 		@Override
 		public void onReceive(Context context, Intent intent) {

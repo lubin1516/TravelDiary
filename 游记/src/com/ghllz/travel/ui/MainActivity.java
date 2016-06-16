@@ -1,11 +1,8 @@
 package com.ghllz.travel.ui;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -13,6 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.ghllz.travel.R;
+import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.service.DiaryService;
 import com.ghllz.travel.ui.fragment.DiaryFragment;
 import com.ghllz.travel.ui.fragment.DiscoveryFragment;
@@ -34,6 +32,8 @@ public class MainActivity extends BaseActivity {
 	private int currentIndex;
 	private Intent intent;
 
+	ServiceConnection conn;
+	DiaryService service;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,19 +42,24 @@ public class MainActivity extends BaseActivity {
 		initFooterView();
 		initServer();
 	}
-	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Intent intent = new Intent(Configs.UPDATE_DETAIL);
+		sendBroadcast(intent);
+	}
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		stopService(intent);
 	}
-	
+
 	private void initFraments(){
 		diaryFragment = new DiaryFragment();
 		nearFragment =  new NearFragment();
@@ -92,9 +97,9 @@ public class MainActivity extends BaseActivity {
 		intent = new Intent(this,DiaryService.class);
 		startService(intent);
 	}
-	
+
 	@Override  
 	public void onSaveInstanceState(Bundle outState) {  
-//	    super.onSaveInstanceState(outState);  
+		//	    super.onSaveInstanceState(outState);  
 	}
 }

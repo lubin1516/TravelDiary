@@ -38,7 +38,6 @@ public class DiaryCoverAdapter extends BaseListAdapter<Cover> {
 		CircleImageView userHeaderImage = ViewHolder.get(convertView, R.id.cv_diary_cover_userHeadImg);
 		View view = ViewHolder.get(convertView, R.id.v_diary_cover);
 		
-		Log.d("Tag",position+"");
 		if(position==0){
 			view.setVisibility(View.GONE);
 		}else{

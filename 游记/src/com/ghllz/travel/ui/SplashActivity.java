@@ -56,6 +56,7 @@ public class SplashActivity extends BaseActivity {
 
 		mReceiver = new BaiduReceiver();
 		registerReceiver(mReceiver, iFilter);
+		
 	}
 
 

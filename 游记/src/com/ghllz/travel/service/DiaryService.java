@@ -1,22 +1,32 @@
 package com.ghllz.travel.service;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.ghllz.travel.config.Configs;
-
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.IBinder;
+
+import com.ghllz.travel.bean.Cover;
+import com.ghllz.travel.bean.DetailBean;
+import com.ghllz.travel.config.Configs;
+import com.ghllz.travel.listener.OnDetailContentFinishListener;
+import com.ghllz.travel.util.DataUtil;
+import com.ghllz.travel.util.HttpUtil;
 
 
 public class DiaryService extends Service {
 	public Context context;
 	Timer diary_timer;
+	private ServiceReceiver myReceiver;
 	public void onCreate() {
 		super.onCreate();
+		initReceiver();
 	}
 
 	@Override
@@ -33,8 +43,39 @@ public class DiaryService extends Service {
 				sendBroadcast(intent);
 			}
 		}, 0,5000);
-
+		
 		return Service.START_NOT_STICKY;
+	}
+
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		unregisterReceiver(myReceiver);
+	}
+
+	private void initReceiver() {
+		myReceiver = new ServiceReceiver();
+		IntentFilter intentFilter= new IntentFilter();
+		intentFilter.addAction(Configs.UPDATE_DETAIL);
+		registerReceiver(myReceiver, intentFilter);
+	}
+
+	private void updateDetail() {
+		for(int i=1;i<=3;i++){
+			if(DataUtil.haveCoverData(i)){
+				continue;
+			}
+			List<Cover> covers = DataUtil.getCoverData(i);
+			for(Cover cover:covers){
+				HttpUtil.getDetailContent(cover.bookUrl, new OnDetailContentFinishListener() {
+					@Override
+					public void onGetDetailContents(DetailBean result) {
+
+					}
+				});
+			}
+		}
 	}
 
 	@Override
@@ -42,9 +83,15 @@ public class DiaryService extends Service {
 		return new MyIBinder();
 	}
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
+	public class ServiceReceiver extends BroadcastReceiver{
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String action = intent.getAction();
+			if(action.equals(Configs.UPDATE_DETAIL)){
+				updateDetail();
+			}
+		}
+
 	}
 
 	public class MyIBinder extends Binder{
@@ -52,4 +99,5 @@ public class DiaryService extends Service {
 			return DiaryService.this;
 		}
 	}
+
 }

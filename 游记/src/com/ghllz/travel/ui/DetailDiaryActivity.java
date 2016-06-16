@@ -80,7 +80,7 @@ public class DetailDiaryActivity extends BaseActivity implements IDetailListView
 		days.setText(mCover.getDays()+"Ìì");
 		likeNume.setText(mCover.getLikeCount());
 		title.setText(mCover.getTitle());
-		
+
 		mListView.addHeaderView(headerTitle);
 		mAdapter = new DetailDayAdapter(this,mDays,mFragments);
 		mListView.setAdapter(mAdapter);
@@ -88,7 +88,7 @@ public class DetailDiaryActivity extends BaseActivity implements IDetailListView
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				
+
 			}
 
 		});

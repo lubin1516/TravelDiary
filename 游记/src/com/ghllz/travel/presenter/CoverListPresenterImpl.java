@@ -5,29 +5,27 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 
-import com.ghllz.travel.CustomApplcation;
+import com.activeandroid.util.Log;
 import com.ghllz.travel.bean.Cover;
 import com.ghllz.travel.listener.OnCoversFinishListener;
 import com.ghllz.travel.model.CoverListModelImpl;
 import com.ghllz.travel.model.ICoverListModel;
 import com.ghllz.travel.ui.ICoverListView;
-import com.ghllz.travel.util.DBUtil;
+import com.ghllz.travel.util.DataUtil;
 
 public class CoverListPresenterImpl implements ICoverListPresenter{
 	ICoverListView view;
 	ICoverListModel model;
-	DBUtil dbUtil;
-
+	int page = 0;
 	public CoverListPresenterImpl(ICoverListView view) {
 		super();
 		this.view = view;
 		this.model = new CoverListModelImpl();
-		this.dbUtil = new DBUtil(CustomApplcation.getInstance());
 	}
-	
+
 	@Override
 	public void onCreate() {
-		
+
 	}
 
 	@Override
@@ -40,16 +38,19 @@ public class CoverListPresenterImpl implements ICoverListPresenter{
 
 	@Override
 	public void showCoverList() {
-//		view.showCoverList(dbUtil.query());
-		model.getCoverList(new OnCoversFinishListener() {
-			@Override
-			public void onGetCovers(List<Cover> Covers) {
-				view.showCoverList(Covers);
-				for(Cover cover:Covers){
-					dbUtil.add(cover);
+		page++;
+		if(DataUtil.haveCoverData(page)){
+			List<Cover> covers = DataUtil.getCoverData(page);
+			view.showCoverList(covers);
+		}else{
+			model.getCoverList(page,new OnCoversFinishListener() {
+				@Override
+				public void onGetCovers(List<Cover> Covers) {
+					view.showCoverList(Covers);
+					Log.d("Tag","text¥”Õ¯¬Áœ¬‘ÿ");
 				}
-			}
-		});
+			});
+		}
 	}
 
 	@Override

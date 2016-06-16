@@ -78,16 +78,20 @@ public class DetailDayAdapter extends BaseListAdapter<DayInfo>{
 			for(int i = 0;i<strings.length;i++){
 				View inflate = mInflater.inflate(R.layout.test01,parent,false);
 				if(strings[i].contains("http")){
-					ImageView imageView = (ImageView) inflate.findViewById(R.id.image);
-					imageView.setVisibility(View.VISIBLE);
-					imageView.setScaleType(ScaleType.FIT_XY);
-					MImageLoader.loadImage(strings[i], imageView,210,280);
+					if (strings[i] != null && !strings[i].equals("")){
+						ImageView imageView = (ImageView) inflate.findViewById(R.id.image);
+						imageView.setVisibility(View.VISIBLE);
+						imageView.setScaleType(ScaleType.FIT_XY);
+						MImageLoader.loadImage(strings[i],imageView,180,240);
+					}
 					fragment.addView(inflate);
 				}else{
-					TextView textView = (TextView) inflate.findViewById(R.id.text);
-					textView.setVisibility(View.VISIBLE);
-					textView.setText("    "+strings[i]);
-					fragment.addView(inflate);
+					if (strings[i] != null && !strings[i].equals("")){
+						TextView textView = (TextView) inflate.findViewById(R.id.text);
+						textView.setVisibility(View.VISIBLE);
+						textView.setText("    "+strings[i]);
+						fragment.addView(inflate);
+					}
 				}
 			}
 			return convertView;

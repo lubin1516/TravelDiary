@@ -12,6 +12,7 @@ import cn.bmob.im.BmobUserManager;
 import cn.bmob.im.util.BmobLog;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 
+import com.activeandroid.ActiveAndroid;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -44,6 +45,7 @@ public class CustomApplcation extends Application {
 	public void onCreate() {
 		super.onCreate();
 		// 是否开启debug模式--默认开启状态
+		ActiveAndroid.initialize(this);
 		MImageLoader.init(this);
 		BmobChat.DEBUG_MODE = true;
 		mInstance = this;

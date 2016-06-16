@@ -2,36 +2,36 @@ package com.ghllz.travel.bean;
 
 import java.io.Serializable;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-
-@DatabaseTable
-public class Cover implements Serializable{
-	@DatabaseField(canBeNull=false)//该项内容不能为空
-	private String title;//标题
-	@DatabaseField(canBeNull=false)//该项内容不能为空
-	private String bookUrl;//详情页面Url
-	@DatabaseField(canBeNull=false)//该项内容不能为空
-	private String headImageUrl;//大图Url
-	@DatabaseField(canBeNull=false)//该项内容不能为空
-	private String startTime;//开始时间
-	@DatabaseField(canBeNull=false)//该项内容不能为空
-	private String days;//天数
-	@DatabaseField(canBeNull=false)//该项内容不能为空
-	private String likeCount;//点赞数量
-	@DatabaseField(canBeNull=false)//该项内容不能为空
-	private String userName;//作者名
-	@DatabaseField
-	private String userHeadImgUrl;//作者头像
-	@DatabaseField
-	private int page;
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+@Table(name = "Cover")
+public class Cover extends Model implements Serializable{
+	@Column(name = "title")
+	public String title;//标题
+	@Column(name = "bookUrl")
+	public String bookUrl;//详情页面Url
+	@Column(name = "headImageUrl")
+	public String headImageUrl;//大图Url
+	@Column(name = "startTime")
+	public String startTime;//开始时间
+	@Column(name = "days")
+	public String days;//天数
+	@Column(name = "likeCount")
+	public String likeCount;//点赞数量
+	@Column(name = "userName")
+	public String userName;//作者名
+	@Column(name = "userHeadImgUrl")
+	public String userHeadImgUrl;//作者头像
+	@Column(name = "page")
+	public int page;
 	public int getPage() {
 		return page;
 	}
 	public void setPage(int page) {
 		this.page = page;
 	}
-	private String aboutTravel;//关于旅程
+	public String aboutTravel;//关于旅程
 	public String getTitle() {
 		return title;
 	}
@@ -86,7 +86,7 @@ public class Cover implements Serializable{
 	public void setAboutTravel(String aboutTravel) {
 		this.aboutTravel = aboutTravel;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Cover [title=" + title + ", bookUrl=" + bookUrl
@@ -95,5 +95,5 @@ public class Cover implements Serializable{
 				+ userName + ", userHeadImgUrl=" + userHeadImgUrl + ", page="
 				+ page + ", aboutTravel=" + aboutTravel + "]";
 	}
-	
+
 }

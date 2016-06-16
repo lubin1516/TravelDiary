@@ -5,10 +5,8 @@ import com.ghllz.travel.util.HttpUtil;
 
 public class CoverListModelImpl implements ICoverListModel{
 
-	private int page=1;
 	@Override
-	public void getCoverList(OnCoversFinishListener listener){
-		page++;
+	public void getCoverList(int page,OnCoversFinishListener listener){
 		HttpUtil.getCoversResponse("",page,listener);
 	}
 
