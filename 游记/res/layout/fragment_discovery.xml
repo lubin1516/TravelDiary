@@ -18,4 +18,7 @@
         android:listSelector="@color/transparent"
         />
     
+    <include 
+        android:id="@+id/header_gridview"
+        layout="@layout/header_gridview_pic"/>
 </LinearLayout>

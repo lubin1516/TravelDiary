@@ -17,11 +17,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DiaryCoverAdapter;
+import com.ghllz.travel.adapter.HeaderGridViewAdapter;
 import com.ghllz.travel.bean.Cover;
 import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.ui.BaseActivity.Position;
@@ -30,14 +32,17 @@ import com.ghllz.travel.view.xlist.XListView.IXListViewListener;
 
 public class DiscoveryFragment extends FragmentBase implements IXListViewListener {
 
+	private List<String> strings ;
 	private ViewPager vp;
 	private View headerView;
 	private DiscoveryReceiver myReceiver;
 	private XListView mListView;
 	private View headerViewPagerPic;
 	private View headerScrollPic;
+	private View headerGridView;
 	private DiaryCoverAdapter mAdapter;
 	private List<Cover> mCoverList;
+	private GridView gv;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -66,12 +71,23 @@ public class DiscoveryFragment extends FragmentBase implements IXListViewListene
 	private void initView(View view) {
 		mListView = (XListView)view.findViewById(R.id.lv_discovery);
 		mCoverList = new ArrayList<Cover>();
+		strings = new ArrayList<String>();
+		strings.add("美国");
+		strings.add("英国");
+		strings.add("法国");
+		strings.add("伊朗");
+		strings.add("新西兰");
+		strings.add("日本");
+		strings.add("泰国");
+		strings.add("台湾");
+		strings.add("韩国");
 	}
 
 	private void initXListView() {
 		LayoutInflater inflater = getActivity().getLayoutInflater();
 		headerViewPagerPic = inflater.inflate(R.layout.header_view_pager_pic, mListView,false);
 		headerScrollPic = inflater.inflate(R.layout.header_scroll_pic,mListView,false);
+		headerGridView = inflater.inflate(R.layout.header_gridview_pic,mListView,false);
 		vp = (ViewPager) headerViewPagerPic.findViewById(R.id.vp_header_pics);
 		MyAdpater vpAdapter = new MyAdpater();
 		vp.setAdapter(vpAdapter);
@@ -95,8 +111,12 @@ public class DiscoveryFragment extends FragmentBase implements IXListViewListene
 
 			}
 		});
+		gv = (GridView) headerGridView.findViewById(R.id.gv_header);
+		HeaderGridViewAdapter gridviewAdapter = new HeaderGridViewAdapter(getActivity(), strings);
+		gv.setAdapter(gridviewAdapter);
 		mListView.addHeaderView(vp);
 		mListView.addHeaderView(headerScrollPic);
+		mListView.addHeaderView(headerGridView);
 		// 首先不允许加载更多
 		mListView.setPullLoadEnable(false);
 		// 允许下拉
