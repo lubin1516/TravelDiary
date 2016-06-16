@@ -3,23 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <TextView 
-        android:id="@+id/text"
+
+    <TextView
+        android:id="@+id/detail_fragment_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="@color/text_color"
         android:layout_marginTop="10dp"
-        android:visibility="gone"
-        />
+        android:textColor="@color/text_color"
+        android:textSize="15sp"
+        android:visibility="gone" />
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/detail_fragment_image"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="260dp"
         android:layout_marginTop="10dp"
         android:background="@color/gray"
-        android:visibility="gone"
-        />
+        android:scaleType="fitXY"
+        android:visibility="gone" />
+
 </LinearLayout>

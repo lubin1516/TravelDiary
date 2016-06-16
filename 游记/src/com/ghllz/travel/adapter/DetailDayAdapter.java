@@ -41,6 +41,7 @@ public class DetailDayAdapter extends BaseListAdapter<DayInfo>{
 		TextView day = ViewHolder.get(convertView, R.id.tv_detail_day_index);
 
 		ListView lv = ViewHolder.get(convertView, R.id.lv_detail_day_Fcontainer);
+		lv.setAdapter(null);
 		List<PlanBox> fragments = DataUtil.getListByTag(dayInfo.getIndexOfDay(), this.fragments);
 		DetailFragmentAdapter adapter = new DetailFragmentAdapter(mContext,fragments);
 		//		mAdapters.add(adapter);
@@ -73,21 +74,21 @@ public class DetailDayAdapter extends BaseListAdapter<DayInfo>{
 			}
 
 			LinearLayout fragment = (LinearLayout) convertView.findViewById(R.id.ll_detail_fragment);
+			fragment.removeAllViews();
 			PlanBox planBox = getList().get(position);
 			String[] strings = DataUtil.getListByString(planBox.getContent());			
 			for(int i = 0;i<strings.length;i++){
-				View inflate = mInflater.inflate(R.layout.test01,parent,false);
+				View inflate = mInflater.inflate(R.layout.item_detail_fragment_image,parent,false);
 				if(strings[i].contains("http")){
 					if (strings[i] != null && !strings[i].equals("")){
-						ImageView imageView = (ImageView) inflate.findViewById(R.id.image);
+						ImageView imageView = (ImageView) inflate.findViewById(R.id.detail_fragment_image);
 						imageView.setVisibility(View.VISIBLE);
-						imageView.setScaleType(ScaleType.FIT_XY);
 						MImageLoader.loadImage(strings[i],imageView,180,240);
 					}
 					fragment.addView(inflate);
 				}else{
 					if (strings[i] != null && !strings[i].equals("")){
-						TextView textView = (TextView) inflate.findViewById(R.id.text);
+						TextView textView = (TextView) inflate.findViewById(R.id.detail_fragment_text);
 						textView.setVisibility(View.VISIBLE);
 						textView.setText("    "+strings[i]);
 						fragment.addView(inflate);
