@@ -180,6 +180,8 @@ public class HttpUtil {
 					//long en=System.currentTimeMillis();
 					//Log.i("TIME","TIME="+(en-st));
 					///////////////////////////////////前言////////////////////////////////////////////
+					DayInfo dayInfo_About=new DayInfo();//前言Info
+					StringBuffer sb_about=new StringBuffer();
 					for(Element e:elements.get(0).select(".planbox")){//遍历前言片段
 						StringBuffer sb=new StringBuffer();
 						PlanBox planBox=new PlanBox();
@@ -205,8 +207,16 @@ public class HttpUtil {
 						planBox.setContent(sb.toString());
 						planBox.save();
 						planBoxs.add(planBox);
-						//Log.i("TAG",""+planBox);				
+						//Log.i("TAG",""+planBox);
+///////////////////////////////////前言Info////////////////////////////////////////////
+						sb_about.append(e.select(".tit").text());
+						sb_about.append("[");
 					}
+					dayInfo_About.setUrl(url);
+					dayInfo_About.setIndexOfDay("前言");
+					dayInfo_About.setDate("-1");
+					dayInfo_About.setTitles(sb_about.toString());
+					dayInfos.add(dayInfo_About);
 					///////////////////////////////////每天Info////////////////////////////////////////////
 					for(int i=1;i<elements.size()-2;i++){
 						PlanBox planBox=new PlanBox();
