@@ -33,7 +33,7 @@ public class HeaderGridViewAdapter extends BaseListAdapter<String>{
 		ImageView imageView = ViewHolder.get(convertView, R.id.iv_header_gridview);
 		country.setText(string);
 		Bitmap bmp=BitmapFactory.decodeResource(mContext.getResources(), resource[position]);
-		Bitmap bitmap = PhotoUtil.toRoundCorner(bmp, 5);
+		Bitmap bitmap = PhotoUtil.toRoundCorner(bmp,20);
 		imageView.setImageBitmap(bitmap);
 		return convertView;
 	}

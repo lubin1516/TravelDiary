@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -131,13 +132,11 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 
 	@Override
 	public void showCoverList(List<Cover> covers) {
-		mCoverList.addAll(covers);
-		mAdapter.addAll(covers);
-		mListView.stopRefresh();
-		mListView.stopLoadMore();
-		mListView.setSelection(lastSize);
-		lastSize = mListView.getChildCount();
-
+			mAdapter.addAll(covers);
+			mListView.stopRefresh();
+			mListView.stopLoadMore();
+			mListView.setSelection(lastSize);
+			lastSize = mListView.getChildCount();
 	}
 
 	@Override

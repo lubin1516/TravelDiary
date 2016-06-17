@@ -33,18 +33,19 @@ public class DiaryCoverAdapter extends BaseListAdapter<Cover> {
 		TextView time = ViewHolder.get(convertView, R.id.tv_diary_cover_time);
 		TextView userName = ViewHolder.get(convertView, R.id.tv_diary_cover_userName);
 		TextView content = ViewHolder.get(convertView, R.id.tv_diary_cover_content);
-		
+
 		ImageView headImage = ViewHolder.get(convertView, R.id.iv_diary_cover_headImage);
 		CircleImageView userHeaderImage = ViewHolder.get(convertView, R.id.cv_diary_cover_userHeadImg);
 		View view = ViewHolder.get(convertView, R.id.v_diary_cover);
-		
+
 		if(position==0){
 			view.setVisibility(View.GONE);
 		}else{
 			view.setVisibility(View.VISIBLE);
 		} 
 		String avatar = cover.getUserHeadImgUrl();
-		if (avatar != null && !avatar.equals("")) {
+		if (avatar != null && !avatar.equals("")){
+			userHeaderImage.setImageResource(R.drawable.default_head);
 			MImageLoader.loadImage(avatar, userHeaderImage,30,30);
 		} else {
 			userHeaderImage.setImageResource(R.drawable.default_head);
@@ -52,6 +53,7 @@ public class DiaryCoverAdapter extends BaseListAdapter<Cover> {
 
 		String image = cover.getHeadImageUrl();
 		if (image != null && !image.equals("")){
+			headImage.setImageBitmap(null);
 			MImageLoader.loadImage(image,headImage,180,240);
 		}
 
@@ -60,49 +62,6 @@ public class DiaryCoverAdapter extends BaseListAdapter<Cover> {
 		likeNume.setText(cover.getLikeCount());
 		title.setText(cover.getTitle());
 		time.setText(cover.getStartTime());
-		//		content.setText(cover.getAboutTravel());
-
-		//		View view =null;
-		//		ViewHolder vh=null;
-		//		if(convertView==null){//convertView (可重用的列表项对象)
-		//			view = mInflater.inflate(R.layout.item_diary_cover,null);
-		//			vh=new ViewHolder();
-		//			vh.days = (TextView) view.findViewById(R.id.tv_diary_cover_days);
-		//			vh.likeNume = (TextView) view.findViewById(R.id.tv_diary_cover_likeNume);
-		//			vh.title = (TextView) view.findViewById(R.id.tv_diary_cover_title);
-		//			vh.time = (TextView) view.findViewById(R.id.tv_diary_cover_time);
-		//			vh.userName = (TextView) view.findViewById(R.id.tv_diary_cover_userName);
-		//			vh.content = (TextView) view.findViewById(R.id.tv_diary_cover_content);
-		//
-		//			vh.headImage = (ImageView) view.findViewById(R.id.iv_diary_cover_headImage);
-		//			vh.userHeaderImage = (CircleImageView) view.findViewById(R.id.cv_diary_cover_userHeadImg);
-		//
-		//			view.setTag(vh);
-		//		}else{
-		//			view=convertView;
-		//			vh=(ViewHolder)convertView.getTag();
-		//		}
-		//
-		//		Cover cover = getList().get(position);
-		//
-		//		String avatar = cover.getUserHeadImgUrl();
-		//		if (avatar != null && !avatar.equals("")) {
-		//			MImageLoader.loadImage(avatar,vh.userHeaderImage,30,30);
-		//		} else {
-		//			vh.userHeaderImage.setImageResource(R.drawable.default_head);
-		//		}
-		//
-		//		String image = cover.getHeadImageUrl();
-		//		if (image != null && !image.equals("")){
-		//			MImageLoader.loadImage(image,vh.headImage,150,200);
-		//		}
-		//
-		//		vh.userName.setText(cover.getUserName());
-		//		vh.days.setText(cover.getDays()+"天");
-		//		vh.likeNume.setText(cover.getLikeCount());
-		//		vh.title.setText(cover.getTitle());
-		//		vh.time.setText(cover.getStartTime());
-		//		vh.content.setText(cover.getAboutTravel());
 
 		return convertView;
 	}

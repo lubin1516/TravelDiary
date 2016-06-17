@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import com.activeandroid.util.Log;
 import com.ghllz.travel.R;
 import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.service.DiaryService;
@@ -18,7 +20,7 @@ import com.ghllz.travel.ui.fragment.MyFragment;
 import com.ghllz.travel.ui.fragment.NearFragment;
 import com.ghllz.travel.util.MImageLoader;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity{
 
 	//½Å²¿²¼¾Ö
 	View footerView;
@@ -43,7 +45,7 @@ public class MainActivity extends BaseActivity {
 		initFooterView();
 		initServer();
 	}
-
+	
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -104,4 +106,5 @@ public class MainActivity extends BaseActivity {
 	public void onSaveInstanceState(Bundle outState) {  
 		//	    super.onSaveInstanceState(outState);  
 	}
+
 }

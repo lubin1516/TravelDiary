@@ -92,7 +92,6 @@ public class HttpUtil {
 			}
 			@Override
 			protected void onPostExecute(List<Cover> result) {
-				Log.d("Tag", result.toString());
 				listener.onGetCovers(result);
 			}
 		}.execute();

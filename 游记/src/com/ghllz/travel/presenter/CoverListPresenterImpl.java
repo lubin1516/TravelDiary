@@ -1,5 +1,6 @@
 package com.ghllz.travel.presenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -16,11 +17,13 @@ import com.ghllz.travel.util.DataUtil;
 public class CoverListPresenterImpl implements ICoverListPresenter{
 	ICoverListView view;
 	ICoverListModel model;
+	List<Cover> mCoverData;
 	int page = 0;
 	public CoverListPresenterImpl(ICoverListView view) {
 		super();
 		this.view = view;
 		this.model = new CoverListModelImpl();
+		this.mCoverData = new ArrayList<Cover>();
 	}
 
 	@Override
@@ -41,13 +44,18 @@ public class CoverListPresenterImpl implements ICoverListPresenter{
 		page++;
 		if(DataUtil.haveCoverData(page)){
 			List<Cover> covers = DataUtil.getCoverData(page);
-			view.showCoverList(covers);
+			if(!mCoverData.contains(covers)){
+				mCoverData.addAll(covers);
+			}
+			view.showCoverList(mCoverData);
 		}else{
 			model.getCoverList(page,new OnCoversFinishListener() {
 				@Override
-				public void onGetCovers(List<Cover> Covers) {
-					view.showCoverList(Covers);
-					Log.d("Tag","text¥”Õ¯¬Áœ¬‘ÿ");
+				public void onGetCovers(List<Cover> covers) {
+					if(!mCoverData.contains(covers)){
+						mCoverData.addAll(covers);
+					}
+					view.showCoverList(mCoverData);
 				}
 			});
 		}

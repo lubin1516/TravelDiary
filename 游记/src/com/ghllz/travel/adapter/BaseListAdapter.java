@@ -47,7 +47,8 @@ public abstract class BaseListAdapter<E> extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public void addAll(List<E> list) {
+	public void addAll(List<E> list){
+		this.list.clear();
 		this.list.addAll(list);
 		notifyDataSetChanged();
 	}
@@ -56,7 +57,7 @@ public abstract class BaseListAdapter<E> extends BaseAdapter {
 		this.list.remove(position);
 		notifyDataSetChanged();
 	}
-
+	
 	public BaseListAdapter(Context context, List<E> list) {
 		super();
 		this.mContext = context;

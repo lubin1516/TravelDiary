@@ -47,7 +47,9 @@
                         android:id="@+id/iv_header_scroll_airplane"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/airplane" />
+                        android:src="@drawable/airplane" 
+                        android:tag="飞机"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -68,7 +70,9 @@
                         android:id="@+id/iv_header_scroll_outdoors"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/outdoors" />
+                        android:src="@drawable/outdoors" 
+                        android:tag="户外"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -89,7 +93,9 @@
                         android:id="@+id/iv_header_scroll_nature"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/nature" />
+                        android:src="@drawable/nature" 
+                        android:tag="自然"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -110,7 +116,9 @@
                         android:id="@+id/iv_header_scroll_seaside"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/seaside" />
+                        android:src="@drawable/seaside"
+                        android:tag="海边"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -131,7 +139,9 @@
                         android:id="@+id/iv_header_scroll_adventure"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/adventure" />
+                        android:src="@drawable/adventure"
+                        android:tag="冒险"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -152,7 +162,9 @@
                         android:id="@+id/iv_header_scroll_exercise"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/exercise" />
+                        android:src="@drawable/exercise" 
+                        android:tag="运动"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -181,7 +193,9 @@
                         android:id="@+id/iv_header_scroll_movie"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/movie" />
+                        android:src="@drawable/movie" 
+                        android:tag="电影"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -202,7 +216,9 @@
                         android:id="@+id/iv_header_scroll_dive"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/dive" />
+                        android:src="@drawable/dive" 
+                        android:tag="潜水"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -223,7 +239,9 @@
                         android:id="@+id/iv_header_scroll_cate"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/cate" />
+                        android:src="@drawable/cate" 
+                        android:tag="美食"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -244,7 +262,9 @@
                         android:id="@+id/iv_header_scroll_anime"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/anime" />
+                        android:src="@drawable/anime" 
+                        android:tag="动漫"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -265,7 +285,9 @@
                         android:id="@+id/iv_header_scroll_humanism"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/humanism" />
+                        android:src="@drawable/humanism" 
+                        android:tag="人文"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -286,7 +308,9 @@
                         android:id="@+id/iv_header_scroll_football"
                         android:layout_width="@dimen/header_scroll_pic_width"
                         android:layout_height="@dimen/header_scroll_pic_height"
-                        android:src="@drawable/football" />
+                        android:src="@drawable/football" 
+                        android:tag="足球"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"

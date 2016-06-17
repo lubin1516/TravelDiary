@@ -187,16 +187,18 @@ public class MImageLoader {
 		//先判断，url所指向的图像是否在缓存中有保存
 
 		//url转为MD5格式的字符串
+		
+		Bitmap bitmap = null;
 
 		final String md5Url = getMD5(url);
 		//设置TAG，到时候要与vo中的URL进行比对！
 		iv.setTag(md5Url);
-		Bitmap bitmap = MemCache.get(md5Url);
-		if(bitmap!=null){
-			Log.d("TAG","图像是从内存缓存中加载的");
-			iv.setImageBitmap(bitmap);
-			return;
-		}
+//		Bitmap bitmap = MemCache.get(md5Url);
+//		if(bitmap!=null){
+//			Log.d("TAG","图像是从内存缓存中加载的");
+//			iv.setImageBitmap(bitmap);
+//			return;
+//		}
 
 		try {
 			//从磁盘缓存中试图取出url所对应的图片
@@ -232,7 +234,7 @@ public class MImageLoader {
 					Bitmap bitmap = compress(is,iv,height,width);
 					is.close();
 					//将压缩后的图像放到内存缓存中存储
-					MemCache.put(md5Url, bitmap);
+					//MemCache.put(md5Url, bitmap);
 					//将压缩后的图像放到磁盘缓存中存储
 					Editor editor = DiskCache.edit(md5Url);
 					OutputStream os = editor.newOutputStream(0);

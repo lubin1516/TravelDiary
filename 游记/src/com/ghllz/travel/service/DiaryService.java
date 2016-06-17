@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.ghllz.travel.bean.Cover;
 import com.ghllz.travel.bean.DetailBean;
@@ -43,7 +44,7 @@ public class DiaryService extends Service {
 				sendBroadcast(intent);
 			}
 		}, 0,5000);
-		
+
 		return Service.START_NOT_STICKY;
 	}
 
@@ -62,20 +63,28 @@ public class DiaryService extends Service {
 	}
 
 	private void updateDetail() {
-		for(int i=1;i<=3;i++){
-			if(DataUtil.haveCoverData(i)){
-				continue;
-			}
-			List<Cover> covers = DataUtil.getCoverData(i);
-			for(Cover cover:covers){
-				HttpUtil.getDetailContent(cover.bookUrl, new OnDetailContentFinishListener() {
-					@Override
-					public void onGetDetailContents(DetailBean result) {
-
+		new Thread(){
+			public void run() {
+				for(int i=1;i<=3;i++){
+					if(!DataUtil.haveCoverData(i)){
+						continue;
 					}
-				});
-			}
-		}
+					Log.d("TAG", i+"");
+					List<Cover> covers = DataUtil.getCoverData(i);
+					for(Cover cover:covers){
+						String url = cover.getBookUrl();
+						if(!(DataUtil.haveDayInfo(url)||DataUtil.havePlanBox(url))){
+							HttpUtil.getDetailContent(cover.bookUrl, new OnDetailContentFinishListener() {
+								@Override
+								public void onGetDetailContents(DetailBean result) {
+								
+								}
+							});
+						}
+					}
+				}
+			};
+		}.start();
 	}
 
 	@Override
@@ -88,6 +97,7 @@ public class DiaryService extends Service {
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
 			if(action.equals(Configs.UPDATE_DETAIL)){
+				Log.d("TAG", "RUN Start");
 				updateDetail();
 			}
 		}
