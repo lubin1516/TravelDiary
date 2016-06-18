@@ -53,6 +53,9 @@ public class DataUtil {
 	public static List<PlanBox> getListByTag(String indexOfDay,List<PlanBox> fragments){
 		List<PlanBox> mFragments = new ArrayList<PlanBox>();
 		for(PlanBox fragment:fragments){
+			if("Ç°ÑÔ".equals(indexOfDay)){
+				mFragments.add(fragment);
+			}
 			if(("µÚ"+fragment.getDays()+"Ìì").equals(indexOfDay)){
 				mFragments.add(fragment);
 			}

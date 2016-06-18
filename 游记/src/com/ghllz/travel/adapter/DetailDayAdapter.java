@@ -3,7 +3,6 @@ package com.ghllz.travel.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.activeandroid.util.Log;
 import com.ghllz.travel.R;
 import com.ghllz.travel.bean.DayInfo;
 import com.ghllz.travel.bean.PlanBox;
@@ -11,11 +10,10 @@ import com.ghllz.travel.util.DataUtil;
 import com.ghllz.travel.util.MImageLoader;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,16 +39,13 @@ public class DetailDayAdapter extends BaseListAdapter<DayInfo>{
 
 		ListView lv = ViewHolder.get(convertView, R.id.lv_detail_day_Fcontainer);
 		lv.setAdapter(null);
+		Log.d("TAG",this.fragments.toString());
 		List<PlanBox> fragments = DataUtil.getListByTag(dayInfo.getIndexOfDay(), this.fragments);
 		DetailFragmentAdapter adapter = new DetailFragmentAdapter(mContext,fragments);
 		//		mAdapters.add(adapter);
 		lv.setAdapter(adapter);
-
-		if(dayInfo.getIndexOfDay().equals("г╟ят")){
-			day.setText("г╟ят");
-		}else{
-			day.setText(dayInfo.getIndexOfDay());
-		}
+		day.setText(dayInfo.getIndexOfDay());
+		
 		return convertView;
 	}
 
