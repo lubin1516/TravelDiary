@@ -24,26 +24,16 @@ import com.ghllz.travel.util.HttpUtil;
 public class DiaryService extends Service {
 	public Context context;
 	Timer diary_timer;
+	int order = 0;
 	private ServiceReceiver myReceiver;
 	public void onCreate() {
 		super.onCreate();
 		initReceiver();
+		initUpdate();
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		//修改Service的启动方式为非粘性
-		diary_timer = new Timer();
-		diary_timer.schedule(new TimerTask() {
-			int order = 0;
-			@Override
-			public void run() {
-				order++;
-				Intent intent = new Intent(Configs.CHANGE_VIEWPAGER);
-				intent.putExtra("order", order);
-				sendBroadcast(intent);
-			}
-		}, 0,5000);
 
 		return Service.START_NOT_STICKY;
 	}
@@ -55,12 +45,6 @@ public class DiaryService extends Service {
 		unregisterReceiver(myReceiver);
 	}
 
-	private void initReceiver() {
-		myReceiver = new ServiceReceiver();
-		IntentFilter intentFilter= new IntentFilter();
-		intentFilter.addAction(Configs.UPDATE_DETAIL);
-		registerReceiver(myReceiver, intentFilter);
-	}
 
 	private void updateDetail() {
 		new Thread(){
@@ -77,7 +61,7 @@ public class DiaryService extends Service {
 							HttpUtil.getDetailContent(cover.bookUrl, new OnDetailContentFinishListener() {
 								@Override
 								public void onGetDetailContents(DetailBean result) {
-								
+
 								}
 							});
 						}
@@ -90,6 +74,28 @@ public class DiaryService extends Service {
 	@Override
 	public IBinder onBind(Intent intent) {
 		return new MyIBinder();
+	}
+
+
+	private void initUpdate() {
+		//修改Service的启动方式为非粘性
+		diary_timer = new Timer();
+		diary_timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				order++;
+				Intent intent = new Intent(Configs.CHANGE_VIEWPAGER);
+				intent.putExtra("order", order);
+				sendBroadcast(intent);
+			}
+		}, 0,5000);
+	}
+
+	private void initReceiver() {
+		myReceiver = new ServiceReceiver();
+		IntentFilter intentFilter= new IntentFilter();
+		intentFilter.addAction(Configs.UPDATE_DETAIL);
+		registerReceiver(myReceiver, intentFilter);
 	}
 
 	public class ServiceReceiver extends BroadcastReceiver{

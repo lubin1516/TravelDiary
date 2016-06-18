@@ -50,8 +50,7 @@ public class DetailListPresenterImpl implements IDetailListPresenter{
 					if(result.getDayInfo()!=null&&result.getPlanBox()!=null){
 						view.showDetailList(result.getDayInfo(),result.getPlanBox());
 					}else{
-						Log.d("TAG", result.getDayInfo().toString());
-						Log.d("TAG", result.getPlanBox().toString());
+						Log.d("TAG", "Êý¾Ý¿Õ¿Õ");
 					}
 				}
 			});
