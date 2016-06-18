@@ -215,6 +215,7 @@ public class HttpUtil {
 					dayInfo_About.setIndexOfDay("Ç°ÑÔ");
 					dayInfo_About.setDate("-1");
 					dayInfo_About.setTitles(sb_about.toString());
+					dayInfo_About.save();
 					dayInfos.add(dayInfo_About);
 					///////////////////////////////////Ã¿ÌìInfo////////////////////////////////////////////
 					for(int i=1;i<elements.size()-2;i++){
