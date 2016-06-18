@@ -3,6 +3,7 @@ package com.ghllz.travel.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.activeandroid.util.Log;
 import com.ghllz.travel.R;
 import com.ghllz.travel.bean.DayInfo;
 import com.ghllz.travel.bean.PlanBox;
@@ -23,11 +24,9 @@ public class DetailDayAdapter extends BaseListAdapter<DayInfo>{
 
 	List<PlanBox> fragments;
 	List<DetailFragmentAdapter> mAdapters;
-	List<List<PlanBox>> mFragments;
 	public DetailDayAdapter(Context context, List<DayInfo> list,List<PlanBox> fragments) {
 		super(context, list);
 		this.fragments= fragments;
-		this.mFragments = new ArrayList<List<PlanBox>>();
 		this.mAdapters = new ArrayList<DetailDayAdapter.DetailFragmentAdapter>();
 	}
 

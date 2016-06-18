@@ -20,5 +20,5 @@
     
     <include 
         android:id="@+id/header_gridview"
-        layout="@layout/header_gridview_pic"/>
+        layout="@layout/item_discovery_gridview"/>
 </LinearLayout>

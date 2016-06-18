@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:descendantFocusability="blocksDescendants"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp"
-    >
+    android:padding="10dp" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,16 +19,16 @@
         android:layout_height="1.5dp"
         android:background="@drawable/base_horizontal_line" />
 
-    <GridView
-        android:layout_margin="10dp"
-        android:id="@+id/gv_header"
+    <com.ghllz.travel.view.MyGridView
+        android:id="@+id/gv_disovery_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
         android:listSelector="#00000000"
         android:numColumns="3"
-        android:scrollbars="none" >
-    </GridView>
+        android:scrollbars="none"
+        android:verticalSpacing="10dp" >
+    </com.ghllz.travel.view.MyGridView>
 
 </LinearLayout>

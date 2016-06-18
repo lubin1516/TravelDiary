@@ -13,20 +13,20 @@ import android.widget.TextView;
 import com.ghllz.travel.R;
 import com.ghllz.travel.util.PhotoUtil;
 
-public class HeaderGridViewAdapter extends BaseListAdapter<String>{
+public class ItemGridViewAdapter extends BaseListAdapter<String>{
 
 	int[] resource= new int[]{R.drawable.america,R.drawable.britain,R.drawable.france,
 			R.drawable.iran,R.drawable.new_zealand,R.drawable.japan,R.drawable.thailand,
 			R.drawable.taiwan,R.drawable.korea};
 
-	public HeaderGridViewAdapter(Context context, List<String> list) {
+	public ItemGridViewAdapter(Context context, List<String> list) {
 		super(context, list);
 	}
 
 	@Override
 	public View bindView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.item_header_gridview, parent,false);
+			convertView = mInflater.inflate(R.layout.item_gridview, parent,false);
 		}
 		String string = getList().get(position);
 		TextView country =ViewHolder.get(convertView, R.id.tv_header_gridview);

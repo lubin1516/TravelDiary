@@ -3,6 +3,7 @@ package com.ghllz.travel.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.activeandroid.util.Log;
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DetailDayAdapter;
 import com.ghllz.travel.bean.Cover;
