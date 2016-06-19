@@ -25,6 +25,15 @@ public class Cover extends Model implements Serializable{
 	public String userHeadImgUrl;//作者头像
 	@Column(name = "page")
 	public int page;
+	@Column(name = "theme")
+	public String theme;//风格
+
+	public String getTheme() {
+		return theme;
+	}
+	public void setTheme(String theme) {
+		this.theme = theme;
+	}
 	public int getPage() {
 		return page;
 	}
@@ -86,14 +95,12 @@ public class Cover extends Model implements Serializable{
 	public void setAboutTravel(String aboutTravel) {
 		this.aboutTravel = aboutTravel;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Cover [title=" + title + ", bookUrl=" + bookUrl
-				+ ", headImageUrl=" + headImageUrl + ", startTime=" + startTime
-				+ ", days=" + days + ", likeCount=" + likeCount + ", userName="
-				+ userName + ", userHeadImgUrl=" + userHeadImgUrl + ", page="
-				+ page + ", aboutTravel=" + aboutTravel + "]";
+		return "Cover [title=" + title + ", bookUrl=" + bookUrl + ", headImageUrl=" + headImageUrl + ", startTime="
+				+ startTime + ", days=" + days + ", likeCount=" + likeCount + ", userName=" + userName
+				+ ", userHeadImgUrl=" + userHeadImgUrl + ", page=" + page + ", theme=" + theme + ", aboutTravel="
+				+ aboutTravel + "]";
 	}
-
 }

@@ -50,11 +50,11 @@ public class DiaryService extends Service {
 		new Thread(){
 			public void run() {
 				for(int i=1;i<=3;i++){
-					if(!DataUtil.haveCoverData(i)){
+					if(!DataUtil.haveCoverData(i,"")){
 						continue;
 					}
 					Log.d("TAG", i+"");
-					List<Cover> covers = DataUtil.getCoverData(i);
+					List<Cover> covers = DataUtil.getCoverData(i,"");
 					for(Cover cover:covers){
 						String url = cover.getBookUrl();
 						if(!(DataUtil.haveDayInfo(url)||DataUtil.havePlanBox(url))){

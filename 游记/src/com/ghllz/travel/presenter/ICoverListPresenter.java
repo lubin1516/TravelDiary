@@ -5,6 +5,6 @@ import android.content.Intent;
 
 
 public interface ICoverListPresenter extends  IPresenter{
-	void showCoverList();
+	void showCoverList(String theme);
 	void jumpTo(Context context,Intent intent);
 }

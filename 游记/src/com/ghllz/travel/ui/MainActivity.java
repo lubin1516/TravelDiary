@@ -1,16 +1,5 @@
 package com.ghllz.travel.ui;
 
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-
-import com.activeandroid.util.Log;
 import com.ghllz.travel.R;
 import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.service.DiaryService;
@@ -19,6 +8,15 @@ import com.ghllz.travel.ui.fragment.DiscoveryFragment;
 import com.ghllz.travel.ui.fragment.MyFragment;
 import com.ghllz.travel.ui.fragment.NearFragment;
 import com.ghllz.travel.util.MImageLoader;
+
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends BaseActivity{
 

@@ -1,14 +1,17 @@
 package com.ghllz.travel.util;
 
-import android.app.Activity;
+import com.ghllz.travel.config.Configs;
+import com.ghllz.travel.ui.ThemeActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
@@ -60,7 +63,7 @@ public class CommonUtils {
 			return false;
 	}
 
-	public static void onImageTouch(View v ,int event,String theme){
+	public static void onImageTouch(final Context context,View v ,int event,final String theme){
 		AnimationSet animationSet = new AnimationSet(false);
 		switch (event) {
 		case MotionEvent.ACTION_DOWN:
@@ -82,8 +85,27 @@ public class CommonUtils {
 			animationSet.addAnimation(U2);
 			animationSet.setDuration(1000);
 			animationSet.setFillAfter(true);
+			animationSet.setAnimationListener(new AnimationListener() {
+				
+				@Override
+				public void onAnimationStart(Animation animation) {
+					
+				}
+				
+				@Override
+				public void onAnimationRepeat(Animation animation) {
+					
+				}
+				
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					Intent intent = new Intent(context,ThemeActivity.class);
+					intent.putExtra(Configs.THEME, theme);
+					context.startActivity(intent);
+				}
+			});
 			v.startAnimation(animationSet);
-			Log.d("TAG",theme);
+			
 			break;
 		case MotionEvent.ACTION_CANCEL:
 			Animation C1 = new ScaleAnimation(1.05f,1.0f,1.05f,1.0f,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f); 

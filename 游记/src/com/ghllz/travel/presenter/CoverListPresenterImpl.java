@@ -40,16 +40,16 @@ public class CoverListPresenterImpl implements ICoverListPresenter{
 	}
 
 	@Override
-	public void showCoverList() {
+	public void showCoverList(String theme) {
 		page++;
-		if(DataUtil.haveCoverData(page)){
-			List<Cover> covers = DataUtil.getCoverData(page);
+		if(DataUtil.haveCoverData(page,theme)){
+			List<Cover> covers = DataUtil.getCoverData(page,theme);
 			if(!mCoverData.contains(covers)){
 				mCoverData.addAll(covers);
 			}
 			view.showCoverList(mCoverData);
 		}else{
-			model.getCoverList(page,new OnCoversFinishListener() {
+			model.getCoverList(page,theme,new OnCoversFinishListener() {
 				@Override
 				public void onGetCovers(List<Cover> covers) {
 					if(!mCoverData.contains(covers)){

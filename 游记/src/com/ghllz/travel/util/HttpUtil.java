@@ -33,7 +33,7 @@ import com.ghllz.travel.listener.OnPlaceFinishListener;
 
 public class HttpUtil {
 
-	public static void getCoversResponse(final String city,final int page,
+	public static void getCoversResponse(final String theme,final int page,
 			final OnCoversFinishListener listener) {
 		new AsyncTask<Void, Void,List<Cover>>() {
 			@Override
@@ -43,7 +43,7 @@ public class HttpUtil {
 				String result = null;
 				StringBuffer sbf = null;
 				try {
-					String c=URLEncoder.encode(city, "utf-8");
+					String c=URLEncoder.encode(theme, "utf-8");
 					String httpUrl = "http://apis.baidu.com/qunartravel/travellist/travellist"
 							+ "?query=%22%22"+c+"&page="+String.valueOf(page);
 					URL url = new URL(httpUrl);
@@ -77,6 +77,7 @@ public class HttpUtil {
 						Cover.setUserHeadImgUrl(js.getString("userHeadImg"));
 						Cover.setUserName(js.getString("userName"));
 						Cover.setPage(page);
+						Cover.setTheme(theme);
 						Cover.save();
 						//							Document doc=Jsoup.connect(Cover.getBookUrl())
 						//									.userAgent("Mozilla").timeout(3000).post();

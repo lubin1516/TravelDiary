@@ -118,8 +118,8 @@ public class DiscoveryCoverAdapter extends BaseAdapter{
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					CommonUtils.onImageTouch(view,0,strings.get(position));
-					CommonUtils.onImageTouch(view,1,strings.get(position));
+					CommonUtils.onImageTouch(mContext,view,0,strings.get(position));
+					CommonUtils.onImageTouch(mContext,view,1,strings.get(position));
 				}
 			});
 			break;  

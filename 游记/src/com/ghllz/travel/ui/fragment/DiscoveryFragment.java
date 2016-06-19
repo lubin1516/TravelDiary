@@ -139,7 +139,7 @@ public class DiscoveryFragment extends FragmentBase implements IXListViewListene
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				CommonUtils.onImageTouch(v, event.getAction(),v.getTag().toString());
+				CommonUtils.onImageTouch(getActivity(),v, event.getAction(),v.getTag().toString());
 				return true;
 			}
 		};

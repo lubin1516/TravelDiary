@@ -8,6 +8,8 @@ package com.ghllz.travel.config;
   */
 public class Configs {
 
+	public static  String THEME = "theme";
+
 	public static  String UPDATE_DETAIL = "update_detail";
 
 	//这是Bmob的ApplicationId,用于初始化操作

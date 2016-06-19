@@ -90,6 +90,7 @@
             android:value="com.ghllz.travel.bean.Cover,com.ghllz.travel.bean.DayInfo,com.ghllz.travel.bean.PlanBox" />
 
         <activity android:name="com.ghllz.travel.ui.MainActivity" />
+        <activity android:name="com.ghllz.travel.ui.ThemeActivity" />
         <activity android:name="com.ghllz.travel.ui.DetailDiaryActivity" />
         <activity android:name="com.ghllz.travel.ui.SplashActivity" >
             <intent-filter>

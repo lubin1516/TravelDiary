@@ -3,24 +3,6 @@ package com.ghllz.travel.ui.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DiaryCoverAdapter;
 import com.ghllz.travel.bean.Cover;
@@ -30,6 +12,23 @@ import com.ghllz.travel.ui.DetailDiaryActivity;
 import com.ghllz.travel.ui.ICoverListView;
 import com.ghllz.travel.view.xlist.XListView;
 import com.ghllz.travel.view.xlist.XListView.IXListViewListener;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 public class DiaryFragment extends FragmentBase implements ICoverListView, IXListViewListener{
 
@@ -57,7 +56,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 	@Override
 	public void onResume() {
 		super.onResume();
-		presenter.showCoverList();
+		presenter.showCoverList("");
 	}
 
 	@Override
@@ -149,7 +148,7 @@ public class DiaryFragment extends FragmentBase implements ICoverListView, IXLis
 		if(mListView.getPullLoading()){
 			return;
 		}
-		presenter.showCoverList();
+		presenter.showCoverList("");
 	}
 
 	@Override

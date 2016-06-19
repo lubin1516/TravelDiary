@@ -36,16 +36,16 @@ public class DataUtil {
 		return fragment;
 	}
 
-	public static Boolean haveCoverData(int page){
-		int size = new Select().from(Cover.class).where("page=?",page).execute().size();
+	public static Boolean haveCoverData(int page, String theme){
+		int size = new Select().from(Cover.class).where("page=?",page).where("theme=?",theme).execute().size();
 		if(size==0){
 			return false;
 		}
 		return true;
 	}
 
-	public static List<Cover> getCoverData(int page){
-		List<Cover> covers = new Select().from(Cover.class).where("page=?",page).execute();
+	public static List<Cover> getCoverData(int page, String theme){
+		List<Cover> covers = new Select().from(Cover.class).where("page=?",page).where("theme=?",theme).execute();
 		return covers;
 
 	}
@@ -67,4 +67,5 @@ public class DataUtil {
 		String[] strings = content.split("\\[");
 		return strings;
 	}
+
 }
