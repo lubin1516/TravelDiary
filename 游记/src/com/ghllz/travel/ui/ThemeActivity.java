@@ -81,7 +81,7 @@ public class ThemeActivity extends BaseActivity implements ICoverListView, IXLis
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				Cover item = (Cover) mAdapter.getItem(position-2);
+				Cover item = (Cover) mAdapter.getItem(position-1);
 				Intent intent = new Intent(ThemeActivity.this,DetailDiaryActivity.class);
 				intent.putExtra(Configs.COVER, item);
 				startActivity(intent);
