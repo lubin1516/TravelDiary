@@ -123,6 +123,7 @@ public class HttpUtil {
 							place.setCity(elements2.get(i).select(".link").get(j).text());
 							place.setSortLetter(getFirstChar(place.getCity()));
 							place.setCity_url(elements2.get(i).select(".link").get(j).attr("href"));
+							place.save();
 							list.add(place);
 						}
 					}

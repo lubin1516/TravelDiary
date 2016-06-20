@@ -12,6 +12,7 @@ import com.ghllz.travel.bean.PlanBox;
 import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.presenter.DetailListPresenterImpl;
 import com.ghllz.travel.presenter.IDetailListPresenter;
+import com.ghllz.travel.util.DataUtil;
 import com.ghllz.travel.util.MImageLoader;
 import com.ghllz.travel.view.CircleImageView;
 

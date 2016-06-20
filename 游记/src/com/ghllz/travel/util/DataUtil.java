@@ -6,6 +6,7 @@ import java.util.List;
 import com.activeandroid.query.Select;
 import com.ghllz.travel.bean.Cover;
 import com.ghllz.travel.bean.DayInfo;
+import com.ghllz.travel.bean.Place;
 import com.ghllz.travel.bean.PlanBox;
 
 public class DataUtil {
@@ -35,6 +36,18 @@ public class DataUtil {
 		List<PlanBox> fragment = new Select().from(PlanBox.class).where("url=?",url).execute();
 		return fragment;
 	}
+	
+	public static Boolean havePlaceData(){
+		int size = new Select().from(Cover.class).execute().size();
+		if(size==0){
+			return false;
+		}
+		return true;
+	}
+	
+	public static List<Place> getPlaceData() {
+		return new Select().from(Cover.class).execute();
+	}
 
 	public static Boolean haveCoverData(int page, String theme){
 		int size = new Select().from(Cover.class).where("page=?",page).where("theme=?",theme).execute().size();
@@ -43,6 +56,7 @@ public class DataUtil {
 		}
 		return true;
 	}
+
 
 	public static List<Cover> getCoverData(int page, String theme){
 		List<Cover> covers = new Select().from(Cover.class).where("page=?",page).where("theme=?",theme).execute();

@@ -41,7 +41,6 @@ public class MainActivity extends BaseActivity{
 		setContentView(R.layout.activity_main);
 		initFraments();
 		initFooterView();
-		initServer();
 	}
 	
 	@Override
@@ -59,7 +58,6 @@ public class MainActivity extends BaseActivity{
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		stopService(intent);
 	}
 
 	private void initFraments(){
@@ -93,11 +91,6 @@ public class MainActivity extends BaseActivity{
 				currentIndex = index;
 			}
 		});
-	}
-
-	private void initServer() {
-		intent = new Intent(this,DiaryService.class);
-		startService(intent);
 	}
 
 	@Override  

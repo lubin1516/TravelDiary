@@ -17,6 +17,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.ghllz.travel.CustomApplcation;
 import com.ghllz.travel.R;
 import com.ghllz.travel.config.Configs;
+import com.ghllz.travel.service.DiaryService;
 import com.ghllz.travel.util.MImageLoader;
 
 /**
@@ -57,8 +58,13 @@ public class SplashActivity extends BaseActivity {
 		mReceiver = new BaiduReceiver();
 		registerReceiver(mReceiver, iFilter);
 		
+		initServer();
 	}
 
+	private void initServer() {
+		Intent intent = new Intent(this,DiaryService.class);
+		startService(intent);
+	}
 
 	@Override
 	protected void onResume() {

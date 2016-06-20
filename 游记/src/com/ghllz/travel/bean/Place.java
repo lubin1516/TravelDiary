@@ -1,15 +1,18 @@
 package com.ghllz.travel.bean;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import java.io.Serializable;
 
-@DatabaseTable
-public class Place {
-	@DatabaseField
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+
+@Table(name = "Place")
+public class Place extends Model implements Serializable{
+	@Column(name = "city")
 	private String city;
-	@DatabaseField
+	@Column(name = "city_url")
 	private String city_url;
-	@DatabaseField
+	@Column(name = "sortLetter")
 	private String sortLetter;
 public String getCity() {
 	return city;

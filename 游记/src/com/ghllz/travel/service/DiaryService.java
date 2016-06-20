@@ -15,8 +15,10 @@ import android.util.Log;
 
 import com.ghllz.travel.bean.Cover;
 import com.ghllz.travel.bean.DetailBean;
+import com.ghllz.travel.bean.Place;
 import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.listener.OnDetailContentFinishListener;
+import com.ghllz.travel.listener.OnPlaceFinishListener;
 import com.ghllz.travel.util.DataUtil;
 import com.ghllz.travel.util.HttpUtil;
 
@@ -70,6 +72,23 @@ public class DiaryService extends Service {
 			};
 		}.start();
 	}
+	
+	private void loadPlace() {
+		new Thread(){
+			public void run() {
+				if(DataUtil.havePlaceData()){
+					return;
+				}else{
+					HttpUtil.getPlace(new OnPlaceFinishListener() {
+						@Override
+						public void getPlace(List<Place> placeList) {
+							Log.d("TAG", placeList.toString());
+						}
+					});
+				}
+			}
+		}.start();
+	}
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -104,7 +123,7 @@ public class DiaryService extends Service {
 			String action = intent.getAction();
 			if(action.equals(Configs.UPDATE_DETAIL)){
 				Log.d("TAG", "RUN Start");
-				updateDetail();
+				loadPlace();
 			}
 		}
 
