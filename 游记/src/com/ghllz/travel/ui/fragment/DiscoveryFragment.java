@@ -3,12 +3,14 @@ package com.ghllz.travel.ui.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.activeandroid.util.Log;
 import com.ghllz.travel.R;
 import com.ghllz.travel.adapter.DiaryCoverAdapter;
 import com.ghllz.travel.adapter.DiscoveryCoverAdapter;
 import com.ghllz.travel.bean.Cover;
 import com.ghllz.travel.config.Configs;
 import com.ghllz.travel.ui.BaseActivity.Position;
+import com.ghllz.travel.ui.SearchActivity;
 import com.ghllz.travel.util.CommonUtils;
 import com.ghllz.travel.view.xlist.XListView;
 import com.ghllz.travel.view.xlist.XListView.IXListViewListener;
@@ -53,6 +55,7 @@ public class DiscoveryFragment extends FragmentBase implements IXListViewListene
 	private View headerScrollPic;
 	private DiscoveryCoverAdapter mAdapter;
 	private List<Cover> mCoverList;
+	private ImageView iv_search;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -81,7 +84,14 @@ public class DiscoveryFragment extends FragmentBase implements IXListViewListene
 	private void initView(View view) {
 		mListView = (XListView)view.findViewById(R.id.lv_discovery);
 		mCoverList = new ArrayList<Cover>();
-		
+		iv_search=(ImageView) view.findViewById(R.id.iv_header_right);
+		iv_search.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(getActivity(),SearchActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	private void initXListView() {
