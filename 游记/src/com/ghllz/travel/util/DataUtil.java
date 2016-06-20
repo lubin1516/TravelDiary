@@ -38,7 +38,7 @@ public class DataUtil {
 	}
 	
 	public static Boolean havePlaceData(){
-		int size = new Select().from(Cover.class).execute().size();
+		int size = new Select().from(Place.class).execute().size();
 		if(size==0){
 			return false;
 		}
@@ -46,7 +46,7 @@ public class DataUtil {
 	}
 	
 	public static List<Place> getPlaceData() {
-		return new Select().from(Cover.class).execute();
+		return new Select().from(Place.class).execute();
 	}
 
 	public static Boolean haveCoverData(int page, String theme){
