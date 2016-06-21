@@ -123,6 +123,14 @@ public class HttpUtil {
 							place.setCity(elements2.get(i).select(".link").get(j).text());
 							place.setSortLetter(getFirstChar(place.getCity()));
 							place.setCity_url(elements2.get(i).select(".link").get(j).attr("href"));
+							StringBuilder upperCase=new StringBuilder();
+							for(int n=0;n<place.getCity().length();n++){
+								String str=place.getCity().substring(n,n+1);
+								upperCase.append(getFirstChar(str));
+							}
+							String s=upperCase.toString();
+							place.setUpperCase(s);
+							place.setLowerCase(s.toLowerCase());
 							place.save();
 							list.add(place);
 						}
@@ -136,7 +144,7 @@ public class HttpUtil {
 			}
 			@Override
 			protected void onPostExecute(List<Place> result) {
-				listener.getPlace(result);;
+				listener.getPlace(result);
 			}
 		}.execute();
 	}

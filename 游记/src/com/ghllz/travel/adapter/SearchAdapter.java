@@ -58,7 +58,7 @@ public class SearchAdapter extends BaseAdapter{
 			}
 			SpannableStringBuilder builder=new SpannableStringBuilder(places.get(position).getCity());
 			ForegroundColorSpan span=new ForegroundColorSpan(0xfff86f4f);
-			builder.setSpan(span, index, index+str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			builder.setSpan(span, index, index+str.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			vh.tv.setText(builder);
 		}else{
 		vh.tv.setText(places.get(position).getCity());
