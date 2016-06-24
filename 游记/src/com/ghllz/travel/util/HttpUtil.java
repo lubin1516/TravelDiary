@@ -113,6 +113,14 @@ public class HttpUtil {
 							place.setCity(elements.get(i).select(".link").get(j).text());
 							place.setSortLetter(getFirstChar(place.getCity()));
 							place.setCity_url(elements.get(i).select(".link").get(j).attr("href"));
+							StringBuilder upperCase=new StringBuilder();
+							for(int n=0;n<place.getCity().length();n++){
+								String str=place.getCity().substring(n,n+1);
+								upperCase.append(getFirstChar(str));
+							}
+							String s=upperCase.toString();
+							place.setUpperCase(s);
+							place.setLowerCase(s.toLowerCase());
 							list.add(place);
 						}
 					}
@@ -131,9 +139,11 @@ public class HttpUtil {
 							String s=upperCase.toString();
 							place.setUpperCase(s);
 							place.setLowerCase(s.toLowerCase());
-							place.save();
 							list.add(place);
 						}
+					}
+					for(Place p:list){
+						p.save();
 					}
 					//Log.i("doc",""+list.size());
 					Log.i("doc",""+list);
